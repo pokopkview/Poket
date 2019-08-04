@@ -23,6 +23,7 @@ public class HttpInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request uest = chain.request();
+        System.out.println(uest.url().toString());
         Response response;
         response = chain.proceed(uest);
         System.out.println("ResponseCode:"+response.code());

@@ -26,29 +26,29 @@ public class ConnectService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         System.out.println("------onHandleIntent");
         final int[] result = {-1};
-            OkHttpUtils.get().url(URLConst.GETHOT()).build().execute(new StringCallback() {
-                @Override
-                public void onError(Call call, Exception e, int id) {
-                    System.out.println("------error");
-                    result[0] = 0;
-//                    Intent net = new Intent();
-//                    net.setAction("mainactivity.connect");
-//                    net.putExtra("connect", result[0]);
-//                    EventBus.getDefault().postSticky(new NetMessage(0));
-//                    LocalBroadcastManager.getInstance(ConnectService.this).sendBroadcast(net);
-                }
-
-                @Override
-                public void onResponse(String response, int id) {
-                    System.out.println("------onResponse");
-                    result[0] = 1;
-//                    Intent net = new Intent();
-//                    net.setAction("mainactivity.connect");
-//                    net.putExtra("connect", result[0]);
-//                    EventBus.getDefault().postSticky(new NetMessage(1));
-//                    LocalBroadcastManager.getInstance(ConnectService.this).sendBroadcast(net);
-                }
-            });
+//            OkHttpUtils.get().url(URLConst.GETHOT()).build().execute(new StringCallback() {
+//                @Override
+//                public void onError(Call call, Exception e, int id) {
+//                    System.out.println("------error");
+//                    result[0] = 0;
+////                    Intent net = new Intent();
+////                    net.setAction("mainactivity.connect");
+////                    net.putExtra("connect", result[0]);
+////                    EventBus.getDefault().postSticky(new NetMessage(0));
+////                    LocalBroadcastManager.getInstance(ConnectService.this).sendBroadcast(net);
+//                }
+//
+//                @Override
+//                public void onResponse(String response, int id) {
+//                    System.out.println("------onResponse");
+//                    result[0] = 1;
+////                    Intent net = new Intent();
+////                    net.setAction("mainactivity.connect");
+////                    net.putExtra("connect", result[0]);
+////                    EventBus.getDefault().postSticky(new NetMessage(1));
+////                    LocalBroadcastManager.getInstance(ConnectService.this).sendBroadcast(net);
+//                }
+//            });
 //
 //
 //

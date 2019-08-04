@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:src="@drawable/c0acc6ae89e0dbc1548d568f788ea87"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <TextView
+        android:textSize="@dimen/sp16"
+        android:background="@color/gainsboro"
+        android:id="@+id/tv_skip"
+        android:text="3 秒 跳 过"
+        android:layout_marginRight="@dimen/dp24"
+        android:layout_marginTop="@dimen/dp30"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

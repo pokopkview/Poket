@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.ButterKnife;
+import demo.great.zhang.poket.LoginActivity;
 import demo.great.zhang.poket.MainActivity;
 import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.net.HttpInterceptor;
@@ -85,6 +86,30 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    public void HttpPost(String url, Map<String,String> params, final int flag){
+        System.out.println(url);
+        OkHttpUtils.post()
+                .url(url)
+                .params(params)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        System.out.println(e.getMessage());
+                        showMsg("未知错误");
+                        dismissProgress();
+//                        showNormalDialog(getString(R.string.net_error_msg));
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        System.out.println(response);
+                        getCallBack(response,flag);
+                    }
+                });
+    }
+
+
     public void HttpGet(String url, Map<String,String> params, final int flag){
         OkHttpUtils.get()
                 .url(url)
@@ -93,6 +118,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
+                        System.out.println(e.getMessage());
                         showMsg("未知错误");
                         dismissProgress();
 //                        showNormalDialog(getString(R.string.net_error_msg));
@@ -204,7 +230,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         long secondTime = System.currentTimeMillis();
-        if(this.getClass().equals(MainActivity.class)) {
+        if(this.getClass().equals(MainActivity.class) || this.getClass().equals(LoginActivity.class) ) {
             if (secondTime - firstTime > 2000) {
                 Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
                 firstTime = secondTime;

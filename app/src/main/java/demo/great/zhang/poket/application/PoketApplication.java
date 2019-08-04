@@ -3,8 +3,14 @@ package demo.great.zhang.poket.application;
 import android.app.Activity;
 import android.app.Application;
 
+import com.zhy.http.okhttp.OkHttpUtils;
+
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import demo.great.zhang.poket.net.HttpInterceptor;
+import okhttp3.OkHttpClient;
 
 public class PoketApplication extends Application {
 
@@ -14,6 +20,14 @@ public class PoketApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        HttpInterceptor interceptor = new HttpInterceptor();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(5000L, TimeUnit.MILLISECONDS)
+                .readTimeout(10000L, TimeUnit.MILLISECONDS)
+                .writeTimeout(10000l,TimeUnit.MILLISECONDS)
+                .addNetworkInterceptor(interceptor)
+                .build();
+        OkHttpUtils.initClient(okHttpClient);
     }
 
 

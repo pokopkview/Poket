@@ -26,6 +26,7 @@ import java.util.Map;
 
 import butterknife.ButterKnife;
 import demo.great.zhang.poket.MainActivity;
+import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.net.HttpInterceptor;
 import okhttp3.Call;
 
@@ -47,7 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 //        hideStatusBar();
         mContext = this;
         mActivity = this;
-//        RailWayVideoApplication.getInstance().addActivity(this);
+        PoketApplication.getInstance().addActivity(this);
         appContext = getApplicationContext();
         mApplication = getApplication();
         HttpInterceptor.setmContext(this);
@@ -220,6 +221,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void exit(){
-//        RailWayVideoApplication.getInstance().exit();
+        PoketApplication.getInstance().exit();
     }
 }

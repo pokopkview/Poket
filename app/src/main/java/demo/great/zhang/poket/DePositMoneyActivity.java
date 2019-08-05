@@ -17,6 +17,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -27,6 +28,12 @@ import demo.great.zhang.poket.base.BaseActivity;
 import demo.great.zhang.poket.net.URLConst;
 import demo.great.zhang.poket.utils.FileUtils;
 import okhttp3.Call;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class DePositMoneyActivity extends BaseActivity {
 
@@ -63,25 +70,27 @@ public class DePositMoneyActivity extends BaseActivity {
                 if (resultCode == RESULT_OK) {
                     Uri uri = intent.getData();
                     try {
-                        File file = FileUtils.uriToFile(uri, DePositMoneyActivity.this);
+                        final File file = FileUtils.uriToFile(uri, DePositMoneyActivity.this);
                         System.out.println(file.getAbsolutePath());
                         Bitmap bitmap = BitmapFactory.decodeStream(DePositMoneyActivity.this.getContentResolver().openInputStream(uri));
                         ivUpload.setImageBitmap(bitmap);
-                        OkHttpUtils.post()
-                                .url(URLConst.GETUPLOADIMG())
-                                .addFile("file", file.getName(), file)
-                                .build().execute(new StringCallback() {
+                        new Thread(){
                             @Override
-                            public void onError(Call call, Exception e, int id) {
-
+                            public void run() {
+                                super.run();
+                                Response response = uploadImage("",file);
+                                if(response==null){
+                                    System.out.println("------");
+                                }else{
+                                    System.out.println(response.code());
+                                    try {
+                                        System.out.println("____"+response.body().string());
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
                             }
-
-                            @Override
-                            public void onResponse(String response, int id) {
-                                System.out.println(response);
-                            }
-                        });
-
+                        }.start();
 
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -96,7 +105,7 @@ public class DePositMoneyActivity extends BaseActivity {
     public void onViewClicked() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             //未授权，申请授权(从相册选择图片需要读取存储卡的权限)
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, RC_CHOOSE_PHOTO);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE}, RC_CHOOSE_PHOTO);
         } else {
             //已授权，获取照片
             getPicFromAlbm();
@@ -113,5 +122,35 @@ public class DePositMoneyActivity extends BaseActivity {
                 getPicFromAlbm();
                 break;
         }
+    }
+    public Response uploadImage(String userName,File file){
+         MediaType MEDIA_TYPE_PNG = MediaType.parse("multipart/form-data");
+         OkHttpClient client = new OkHttpClient();
+        //2.创建RequestBody
+        RequestBody fileBody = RequestBody.create(MEDIA_TYPE_PNG, file);
+
+        //3.构建MultipartBody
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("headimg", "testImage.png", fileBody)
+                .build();
+
+        //4.构建请求
+        Request request = new Request.Builder()
+                .url(URLConst.GETUPLOADIMG())
+                .post(requestBody)
+                .build();
+
+        //5.发送请求
+
+
+        try {
+
+            Response response = client.newCall(request).execute();
+            return response;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

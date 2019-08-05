@@ -4,6 +4,7 @@ public class URLConst {
     public static String tempURL = "";
     public static String netURL = "http://2b3b707881.iok.la";
     public static String staticURL = "http://yd.ethereume.io";
+//    public static String staticURL = "http://249r7312z4.zicp.vip:37826";
     public static String baseurl(){return staticURL;}
     public static String GETLOGIN(){return staticURL+"/member/login";}
     public static String GETMYMONEY(){return staticURL+"/member/zichanInfo";}

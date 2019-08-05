@@ -13,4 +13,5 @@ public class URLConst {
     public static String GETREDFLOWER(){return staticURL + "/member/flowerinter";}
     public static String GETNMS(){return staticURL + "/member/changeNmst";}
     public static String GETDEALDETAIL(){return staticURL+"/member/jyrecord";}
+    public static String GETUPLOADIMG(){return staticURL+"/member/uploadImg";}
 }

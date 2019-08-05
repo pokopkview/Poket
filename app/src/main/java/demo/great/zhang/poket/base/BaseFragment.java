@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,6 +53,7 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
         initData(savedInstanceState);
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable

@@ -21,7 +21,10 @@ import android.widget.Toast;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import butterknife.ButterKnife;
@@ -39,7 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected Application mApplication;
 
     protected static Toast toast;
-    protected Map<String,String> params;
+    protected LinkedHashMap<String,String> params;
 
     protected ProgressDialog mProgress;
 
@@ -53,7 +56,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         appContext = getApplicationContext();
         mApplication = getApplication();
         HttpInterceptor.setmContext(this);
-        params = new HashMap<>();
+        params = new LinkedHashMap<>();
         setOrientation();
         setContentView(getLayout());
         ButterKnife.bind(this);
@@ -87,48 +90,55 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void HttpPost(String url, Map<String,String> params, final int flag){
-        System.out.println(url);
-        OkHttpUtils.post()
-                .url(url)
-                .params(params)
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        System.out.println(e.getMessage());
-                        showMsg("未知错误");
-                        dismissProgress();
+        System.out.println(params);
+            OkHttpUtils.post()
+                    .url(url)
+                    .params(params)
+//                    .addParams("mobile","18913102816")
+//                    .addParams("password","123456")
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            System.out.println(e.getMessage());
+                            showMsg("未知错误");
+                            dismissProgress();
 //                        showNormalDialog(getString(R.string.net_error_msg));
-                    }
+                        }
 
-                    @Override
-                    public void onResponse(String response, int id) {
-                        System.out.println(response);
-                        getCallBack(response,flag);
-                    }
-                });
+                        @Override
+                        public void onResponse(String response, int id) {
+                            System.out.println(response);
+                            getCallBack(response, flag);
+                        }
+                    });
     }
 
 
     public void HttpGet(String url, Map<String,String> params, final int flag){
-        OkHttpUtils.get()
-                .url(url)
-                .params(params)
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        System.out.println(e.getMessage());
-                        showMsg("未知错误");
-                        dismissProgress();
+        System.out.println(url);
+        try {
+            OkHttpUtils.get()
+                    .url(url)
+                    .params(params)
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            System.out.println(e.getMessage());
+                            showMsg("未知错误");
+                            dismissProgress();
 //                        showNormalDialog(getString(R.string.net_error_msg));
-                    }
+                        }
 
-                    @Override
-                    public void onResponse(String response, int id) {
-                        getCallBack(response,flag);
-                    }
-                });
+                        @Override
+                        public void onResponse(String response, int id) {
+                            getCallBack(response, flag);
+                        }
+                    });
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     protected void getCallBack(String response,int flag){};
@@ -238,7 +248,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 exit();
             }
         }else{
-            exit();
+            finish();
         }
     }
 

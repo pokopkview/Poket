@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
 
@@ -107,17 +108,17 @@
                     android:textColor="@color/white"
                     android:layout_marginTop="@dimen/dp12"
                     android:layout_marginLeft="@dimen/dp12"
-                    android:text="NAS 余额(n1RBdrl)"/>
+                    android:text="NAS 余额(%s)"/>
 
                 <TextView
                     android:id="@+id/tv_my_own_mid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp12"
                     android:layout_marginLeft="@dimen/dp12"
+                    android:layout_marginTop="@dimen/dp12"
                     android:text="0"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/sp18"/>
+                    android:textSize="@dimen/sp18" />
 
                 <TextView
                     android:id="@+id/tv_pass"
@@ -138,6 +139,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:visibility="invisible"
                     android:id="@+id/iv_eqcode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -245,13 +247,29 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-    <ImageView
+    <View
+        android:background="@color/gray_cc"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp120"
-        android:src="@drawable/banner1"/>
+        android:layout_height="@dimen/dp10"/>
+
+    <com.youth.banner.Banner
+        android:layout_marginTop="@dimen/dp3"
+        android:layout_marginBottom="@dimen/dp3"
+        android:layout_marginRight="@dimen/dp5"
+        android:layout_marginLeft="@dimen/dp5"
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp80"
+        app:title_textsize="24sp">
+
+    </com.youth.banner.Banner>
+    <View
+        android:background="@color/gray_cc"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp10"/>
 
     <TextView
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp12"
@@ -260,4 +278,8 @@
         android:textColor="@color/black"
         android:text="通证资产"/>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rl_md_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

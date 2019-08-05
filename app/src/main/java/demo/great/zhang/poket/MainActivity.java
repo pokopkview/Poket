@@ -13,12 +13,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import demo.great.zhang.poket.base.BaseActivity;
 import demo.great.zhang.poket.base.BaseFragment;
+import demo.great.zhang.poket.eventmsg.Meberid;
 import demo.great.zhang.poket.fragment.FragmentNew;
 import demo.great.zhang.poket.fragment.FragmentPersonal;
 import demo.great.zhang.poket.fragment.PoketFragment;
+import demo.great.zhang.poket.net.URLConst;
+import okhttp3.Call;
 
 public class MainActivity extends BaseActivity {
 
@@ -52,6 +60,9 @@ public class MainActivity extends BaseActivity {
         fragmentfirst = new PoketFragment();
         fragmentSecon = new FragmentNew();
         fragmentThrid = new FragmentPersonal();
+        Bundle bundle = new Bundle();
+        bundle.putString("meberid",getIntent().getStringExtra("meberid"));
+        fragmentfirst.setArguments(bundle);
         fragments = new BaseFragment[]{fragmentfirst, fragmentSecon, fragmentThrid};
         lastfragment = 0;
         getSupportFragmentManager().beginTransaction().replace(R.id.mainview, fragmentfirst).show(fragmentfirst).commit();

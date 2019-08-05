@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.log.LoggerInterceptor;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class PoketApplication extends Application {
                 .connectTimeout(5000L, TimeUnit.MILLISECONDS)
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
                 .writeTimeout(10000l,TimeUnit.MILLISECONDS)
+                .addInterceptor(new LoggerInterceptor("TAG"))
                 .addNetworkInterceptor(interceptor)
                 .build();
         OkHttpUtils.initClient(okHttpClient);

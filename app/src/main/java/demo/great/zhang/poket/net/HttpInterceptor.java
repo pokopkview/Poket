@@ -27,23 +27,9 @@ public class HttpInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request uest = chain.request();
-        System.out.println(uest.toString());
-        System.out.println(uest.body().getClass());
-        Set<String> paramKeys = uest.url().queryParameterNames();
-        for (String key : paramKeys) {
-            String value = uest.url().queryParameter(key);
-            // 这里就是GET接口传的参数key和value
-            System.out.println("value:"+value);
-        }
-        if (uest.body() instanceof CountingRequestBody) {
-            CountingRequestBody formBody = (CountingRequestBody) uest.body();
-            System.out.println(formBody.contentLength());
-            System.out.println(formBody.contentType());
-        }
         Response response;
         response = chain.proceed(uest);
         System.out.println("ResponseCode:"+response.code());
-
         System.out.println("Response:"+response.toString());
         if(response.code()!= HttpURLConnection.HTTP_OK){
             ((Activity)mContext).runOnUiThread(new Runnable() {

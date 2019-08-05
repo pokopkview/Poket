@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="您的收款方式"
+        android:textSize="@dimen/sp24"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/dp12"
+        android:layout_marginLeft="@dimen/dp12"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginTop="@dimen/dp12"
+        android:background="@color/paleturquoise"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="使用一个钱包地址既可接收"
+            android:textSize="@dimen/sp14"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/dp12"
+            android:textColor="@color/dodgerblue"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="NRC-20代币"
+            android:textSize="@dimen/sp14"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/dp5"
+            android:textColor="@color/midnightblue"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="钱包地址"
+        android:layout_marginTop="@dimen/dp12"
+        android:layout_marginLeft="@dimen/dp12"
+        android:textSize="@dimen/sp12"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_walet_ad"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="agsdfalkg;alkfa;"
+            android:layout_gravity="center"
+            android:gravity="center|left"
+            android:textColor="@color/black"
+            android:layout_marginLeft="@dimen/dp12"/>
+
+        <TextView
+            android:id="@+id/tv_click_copy"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="@dimen/dp30"
+            android:textColor="@color/midnightblue"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="@dimen/dp12"
+            android:background="@color/gainsboro"
+            android:text="复制"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/darkgray"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/midnightblue"
+        android:layout_marginTop="@dimen/dp12"
+        android:layout_marginLeft="@dimen/dp12"
+        android:text="温馨提示"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp12"
+        android:text="*请勿向上述地址充值任何非NAS资产(支持NRC-20协议币)，否则资产将不可找回。"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp12"
+        android:text="*您充值至上述地址后，需要整个网络节点的确认，21次网络确认后到转账，待网络确人后可提币。"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp12"
+        android:text="*请务必确认网络环境安全，防止信息被篡改或泄露。"/>
+</LinearLayout>

@@ -62,28 +62,29 @@ public class DePositMoneyActivity extends BaseActivity {
             case ALBUM_REQUEST_CODE:    //调用相册后返回
                 if (resultCode == RESULT_OK) {
                     Uri uri = intent.getData();
+                    System.out.println("RESULT_OK");
                     try {
-                        File file = FileUtils.uriToFile(uri,DePositMoneyActivity.this);
+                        File file = FileUtils.uriToFile(uri, DePositMoneyActivity.this);
                         System.out.println(file.getAbsolutePath());
                         Bitmap bitmap = BitmapFactory.decodeStream(DePositMoneyActivity.this.getContentResolver().openInputStream(uri));
                         ivUpload.setImageBitmap(bitmap);
-                                OkHttpUtils.post()
-                                        .url(URLConst.GETUPLOADIMG())
-                .addFile("memberId", file.getName(), file)
-                .build().execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e, int id) {
+                        OkHttpUtils.post()
+                                .url(URLConst.GETUPLOADIMG())
+                                .addFile("file", file.getName(), file)
+                                .build().execute(new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
 
-            }
+                            }
 
-            @Override
-            public void onResponse(String response, int id) {
-                    System.out.println(response);
-            }
-        });
+                            @Override
+                            public void onResponse(String response, int id) {
+                                System.out.println(response);
+                            }
+                        });
 
 
-                    }catch (FileNotFoundException e) {
+                    } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
@@ -104,7 +105,7 @@ public class DePositMoneyActivity extends BaseActivity {
     }
 
     /**
-     权限申请结果回调
+     * 权限申请结果回调
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

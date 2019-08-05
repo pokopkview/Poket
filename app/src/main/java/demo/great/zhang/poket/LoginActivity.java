@@ -15,6 +15,7 @@ import java.lang.reflect.Type;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.base.BaseActivity;
 import demo.great.zhang.poket.entity.LoginBean;
 import demo.great.zhang.poket.entity.ResponseBean;
@@ -44,6 +45,7 @@ public class LoginActivity extends BaseActivity {
     public void onViewClicked() {
         String name = etUsername.getText().toString();
         String pwd = etUserpwd.getText().toString();
+        tvLogin.setClickable(false);
         OkHttpUtils.post()
                 .url(URLConst.GETLOGIN())
                     .addParams("mobile",name)
@@ -53,12 +55,14 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         System.out.println(e.getMessage());
+                        tvLogin.setClickable(true);
 //                        showMsg("未知错误");
 //                        dismissProgress();
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
+                        tvLogin.setClickable(true);
                         System.out.println(response);
                         getCallBack(response, 1);
                     }
@@ -75,6 +79,7 @@ public class LoginActivity extends BaseActivity {
                     ResponseBean<LoginBean> responseBean = new Gson().fromJson(response,type);
                     if(responseBean.getCode().equals("0")){
                         Intent intent = new Intent(mContext,MainActivity.class);
+                        PoketApplication.MEMBERID = responseBean.getData().getMemberId();
                         intent.putExtra("meberid",responseBean.getData().getMemberId());
                         startActivity(intent);
                         finish();

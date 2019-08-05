@@ -31,8 +31,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import demo.great.zhang.poket.ChargeActivity;
 import demo.great.zhang.poket.DePositMoneyActivity;
 import demo.great.zhang.poket.R;
+import demo.great.zhang.poket.ReceivActivity;
 import demo.great.zhang.poket.adapter.DBAdapter;
 import demo.great.zhang.poket.base.BaseFragment;
 import demo.great.zhang.poket.entity.MeberDetail;
@@ -143,6 +145,23 @@ public class PoketFragment extends BaseFragment {
                 startActivity(intent);
             }
         });
+        llShareMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getAppActivity(), ChargeActivity.class);
+                intent.putExtra("meberid",mID);
+                startActivity(intent);
+            }
+        });
+        llGetmoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getAppActivity(), ReceivActivity.class);
+                intent.putExtra("waletaddress",tvPass.getText().toString());
+                startActivity(intent);
+            }
+        });
+
     }
 
 

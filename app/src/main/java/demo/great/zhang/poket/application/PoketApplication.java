@@ -10,13 +10,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import demo.great.zhang.poket.entity.MeberDetail;
 import demo.great.zhang.poket.net.HttpInterceptor;
 import okhttp3.OkHttpClient;
 
 public class PoketApplication extends Application {
 
+    public static String MEMBERID;
+    public static MeberDetail.MemberBean currentBean;
 
     private static PoketApplication instance = null;
+
     List<Activity> activityList = new LinkedList();//Activity 容器
     @Override
     public void onCreate() {

@@ -62,7 +62,6 @@ public class DePositMoneyActivity extends BaseActivity {
             case ALBUM_REQUEST_CODE:    //调用相册后返回
                 if (resultCode == RESULT_OK) {
                     Uri uri = intent.getData();
-                    System.out.println("RESULT_OK");
                     try {
                         File file = FileUtils.uriToFile(uri, DePositMoneyActivity.this);
                         System.out.println(file.getAbsolutePath());

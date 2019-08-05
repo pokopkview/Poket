@@ -146,6 +146,7 @@
         android:text="最近"/>
 
     <LinearLayout
+        android:id="@+id/ll_new"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -156,6 +157,7 @@
             android:background="@color/white"
             android:layout_marginLeft="@dimen/dp15"
             android:layout_marginTop="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp15"
             android:src="@drawable/new01"/>
 
         <TextView
@@ -165,6 +167,7 @@
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp15"
             android:textSize="@dimen/sp16"
             android:text="new+"/>
 

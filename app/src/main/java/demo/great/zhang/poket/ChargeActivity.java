@@ -43,25 +43,25 @@ public class ChargeActivity extends BaseActivity {
 
     @OnClick(R.id.tv_confirm_t)
     public void onViewClicked() {
-        OkHttpUtils.post()
-                .url(URLConst.GETSHAREMONEY())
-                .addParams("memberId",getIntent().getStringExtra("meberid"))
-                .addParams("walletName",tvWaletAddress.getText().toString())
-                .addParams("zcnum",tvCount.getText().toString())
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        System.out.println(e.getMessage());
-//                        showMsg("未知错误");
-//                        dismissProgress();
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        System.out.println(response);
-                        getCallBack(response, 1);
-                    }
-                });
+//        OkHttpUtils.post()
+//                .url(URLConst.GETSHAREMONEY())
+//                .addParams("memberId",getIntent().getStringExtra("meberid"))
+//                .addParams("walletName",tvWaletAddress.getText().toString())
+//                .addParams("zcnum",tvCount.getText().toString())
+//                .build()
+//                .execute(new StringCallback() {
+//                    @Override
+//                    public void onError(Call call, Exception e, int id) {
+//                        System.out.println(e.getMessage());
+////                        showMsg("未知错误");
+////                        dismissProgress();
+//                    }
+//
+//                    @Override
+//                    public void onResponse(String response, int id) {
+//                        System.out.println(response);
+//                        getCallBack(response, 1);
+//                    }
+//                });
     }
 }

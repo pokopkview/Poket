@@ -75,7 +75,7 @@ public class DePositMoneyActivity extends BaseActivity {
                     try {
                         final File file = FileUtils.uriToFile(uri, DePositMoneyActivity.this);
                         System.out.println(file.getAbsolutePath());
-                        Bitmap bitmap = BitmapFactory.decodeStream(DePositMoneyActivity.this.getContentResolver().openInputStream(uri));
+                        Bitmap bitmap = BitmapFactory.decodeStream(DePositMoneyActivity.this.getContentResolver()           .openInputStream(uri));
                         ivUpload.setImageBitmap(bitmap);
                         new Thread() {
                             @Override
@@ -90,6 +90,7 @@ public class DePositMoneyActivity extends BaseActivity {
                                         public void run() {
                                             try {
                                                 takenMoney(response.body().string());
+
                                             } catch (IOException e) {
                                                 e.printStackTrace();
                                             }

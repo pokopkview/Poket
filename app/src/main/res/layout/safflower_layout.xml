@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@drawable/boxbg">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="共振NAS总量"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp14"
+        android:layout_marginTop="@dimen/dp12"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1259143.52"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp28"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp12"/>
+
+   
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="第147阶段"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp14"
+        android:layout_marginTop="@dimen/dp12"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp12"
+        android:layout_marginLeft="@dimen/dp12"
+        android:background="@color/silver"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="引领着(NAS)"
+            android:textSize="@dimen/sp12"
+            android:padding="@dimen/dp5"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="推广者(NAS)"
+            android:textSize="@dimen/sp12"
+            android:layout_marginLeft="@dimen/dp12"
+            android:padding="@dimen/dp5"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="幸运锦鲤(NAS)"
+            android:layout_marginLeft="@dimen/dp12"
+            android:textSize="@dimen/sp12"
+            android:paddingLeft="@dimen/dp12"
+            android:paddingRight="@dimen/dp12"
+            android:padding="@dimen/dp5"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@color/gainsboro"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="251828.2545"
+            android:textSize="@dimen/sp12"
+            android:padding="@dimen/dp5"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="13215151351"
+            android:textSize="@dimen/sp12"
+            android:layout_marginLeft="@dimen/dp12"
+            android:padding="@dimen/dp5"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="35135156"
+            android:layout_marginLeft="@dimen/dp12"
+            android:textSize="@dimen/sp12"
+            android:paddingLeft="@dimen/dp12"
+            android:paddingRight="@dimen/dp12"
+            android:padding="@dimen/dp5"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dp12"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp30"
+            android:text="查看奖池详情"
+            android:textSize="@dimen/sp12"
+            android:padding="@dimen/dp5"
+            android:background="@drawable/simple_shape01"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp30"
+            android:text="查看我的邀请码"
+            android:textSize="@dimen/sp12"
+            android:layout_marginLeft="@dimen/dp12"
+            android:padding="@dimen/dp5"
+            android:background="@drawable/simple_shape02"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp30"
+            android:text="解锁"
+            android:layout_marginLeft="@dimen/dp12"
+            android:textSize="@dimen/sp12"
+            android:paddingLeft="@dimen/dp12"
+            android:paddingRight="@dimen/dp12"
+            android:paddingTop="@dimen/dp5"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/simple_shape03"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/dp48"
+       android:layout_gravity="center"
+       android:gravity="center|left"
+       android:orientation="horizontal">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="钱包地址："
+           android:layout_marginLeft="@dimen/dp50"
+           android:textColor="@color/white"/>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="sdfasdfasdfsdfsdaggasd"
+           android:gravity="right"
+           android:textColor="@color/white"/>
+   </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dp48"
+            android:text="兑换WITI"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginRight="@dimen/dp12"
+            android:layout_marginLeft="@dimen/dp30"
+            android:background="@drawable/simple_shape01"
+            android:textSize="@dimen/sp16"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dp48"
+            android:text="推广WITI"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@color/red"
+            android:layout_marginRight="@dimen/dp30"
+            android:textSize="@dimen/sp16"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/dp12"
+        android:layout_gravity="right"
+        android:gravity="right"
+        android:layout_marginRight="@dimen/dp30"
+        android:text="您成功推荐0人"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/dp12"
+        android:layout_gravity="right"
+        android:gravity="right"
+        android:layout_marginRight="@dimen/dp30"
+        android:text="您收益0"/>
+</LinearLayout>

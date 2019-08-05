@@ -108,7 +108,7 @@
                     android:textColor="@color/white"
                     android:layout_marginTop="@dimen/dp12"
                     android:layout_marginLeft="@dimen/dp12"
-                    android:text="NAS 余额(%s)"/>
+                    android:text="USDT 余额(%s)"/>
 
                 <TextView
                     android:id="@+id/tv_my_own_mid"

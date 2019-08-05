@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -24,7 +25,9 @@ import java.net.URISyntaxException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.base.BaseActivity;
+import demo.great.zhang.poket.entity.UploadImgBack;
 import demo.great.zhang.poket.net.URLConst;
 import demo.great.zhang.poket.utils.FileUtils;
 import okhttp3.Call;
@@ -74,20 +77,24 @@ public class DePositMoneyActivity extends BaseActivity {
                         System.out.println(file.getAbsolutePath());
                         Bitmap bitmap = BitmapFactory.decodeStream(DePositMoneyActivity.this.getContentResolver().openInputStream(uri));
                         ivUpload.setImageBitmap(bitmap);
-                        new Thread(){
+                        new Thread() {
                             @Override
                             public void run() {
                                 super.run();
-                                Response response = uploadImage("",file);
-                                if(response==null){
-                                    System.out.println("------");
-                                }else{
-                                    System.out.println(response.code());
-                                    try {
-                                        System.out.println("____"+response.body().string());
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
+                                final Response response = uploadImage(file);
+                                if (response == null) {
+                                    showMsg("网络错误");
+                                } else {
+                                    mActivity.runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                takenMoney(response.body().string());
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
                                 }
                             }
                         }.start();
@@ -100,12 +107,36 @@ public class DePositMoneyActivity extends BaseActivity {
         }
     }
 
+    private void takenMoney(String response) {
+        UploadImgBack imgBack = new Gson().fromJson(response,UploadImgBack.class);
+        OkHttpUtils.post()
+                .url(URLConst.GETLOGIN())
+                .addParams("usdtpz",imgBack.getImg())//image url
+                .addParams("usdtnum","")//数量 这里是edittext 获取数据
+                .addParams("memberId", PoketApplication.MEMBERID)//meberid
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        System.out.println(e.getMessage());
+//                        showMsg("未知错误");
+//                        dismissProgress();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+
+                    }
+                });
+
+    }
+
 
     @OnClick(R.id.iv_upload)
     public void onViewClicked() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             //未授权，申请授权(从相册选择图片需要读取存储卡的权限)
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE}, RC_CHOOSE_PHOTO);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, RC_CHOOSE_PHOTO);
         } else {
             //已授权，获取照片
             getPicFromAlbm();
@@ -123,27 +154,19 @@ public class DePositMoneyActivity extends BaseActivity {
                 break;
         }
     }
-    public Response uploadImage(String userName,File file){
-         MediaType MEDIA_TYPE_PNG = MediaType.parse("multipart/form-data");
-         OkHttpClient client = new OkHttpClient();
-        //2.创建RequestBody
-        RequestBody fileBody = RequestBody.create(MEDIA_TYPE_PNG, file);
 
-        //3.构建MultipartBody
+    public Response uploadImage(File file) {
+        MediaType MEDIA_TYPE_PNG = MediaType.parse("multipart/form-data");
+        OkHttpClient client = new OkHttpClient();
+        RequestBody fileBody = RequestBody.create(MEDIA_TYPE_PNG, file);
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("headimg", "testImage.png", fileBody)
+                .addFormDataPart("headimg", file.getName(), fileBody)
                 .build();
-
-        //4.构建请求
         Request request = new Request.Builder()
                 .url(URLConst.GETUPLOADIMG())
                 .post(requestBody)
                 .build();
-
-        //5.发送请求
-
-
         try {
 
             Response response = client.newCall(request).execute();

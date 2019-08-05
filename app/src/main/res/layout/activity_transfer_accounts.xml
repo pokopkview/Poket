@@ -72,8 +72,9 @@
         android:layout_marginTop="@dimen/dp12"/>
 
     <EditText
+        android:background="@null"
         android:id="@+id/tv_count"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="0.0000"
         android:textSize="@dimen/sp16"

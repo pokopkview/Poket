@@ -16,6 +16,11 @@ public class SplaseActivity extends BaseActivity {
     TextView tvSkip;
 
     @Override
+    public String title_text() {
+        return null;
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.layout_splase_activity;
     }

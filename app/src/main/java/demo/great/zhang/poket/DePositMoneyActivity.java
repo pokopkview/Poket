@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -58,6 +59,11 @@ public class DePositMoneyActivity extends BaseActivity {
 
 
     @Override
+    public String title_text() {
+        return "充币";
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.dipost_layout;
     }
@@ -67,6 +73,19 @@ public class DePositMoneyActivity extends BaseActivity {
         btConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (etCount.getText().toString().trim() == null || "".equals(etCount.getText().toString().trim())){
+                    toast.setText("充值数量不能为空！");
+                    toast.show();
+                    return;
+                }
+                if (imgurl == null){
+                    toast.setText("图片充值凭证不能为空！");
+                    toast.show();
+                    return;
+                }
+
+
                 OkHttpUtils.post()
                         .url(URLConst.GETMONEY())
                         .addParams("usdtpz",imgurl)//image url
@@ -83,12 +102,13 @@ public class DePositMoneyActivity extends BaseActivity {
 
                             @Override
                             public void onResponse(String response, int id) {
-                                System.out.println(response);
+                                System.out.println("充值"+response);
                                 Type type = new TypeToken<ResponseBean<String>>() {
                                 }.getType();
                                 ResponseBean<String> imgBack = new Gson().fromJson(response, type);
                                 if(imgBack.getCode().equals("0")){
                                     showMsg("充值成功！");
+                                    finish();
                                 }else{
                                     showMsg(imgBack.getText());
                                 }

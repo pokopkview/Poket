@@ -31,6 +31,11 @@ public class ChargeActivity extends BaseActivity {
     TextView tvConfirmT;
 
     @Override
+    public String title_text() {
+        return "转账";
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.activity_transfer_accounts;
     }

@@ -4,51 +4,61 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:layout_height="match_parent">
-    <RelativeLayout
-        android:id="@+id/rl_header"
+
+    <include layout="@layout/include_title"/>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/dodgerblue"
-        android:layout_height="54dp">
+        android:layout_height="wrap_content"
+        android:background="@color/cadetblue"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_count"
+            android:background="@null"
+            android:hint="请输入充币个数"
+            android:textColorHint="@color/white"
+            android:layout_marginTop="@dimen/dp48"
+            android:layout_width="match_parent"
+            android:inputType="number|numberDecimal"
+            android:textColor="@color/white"
+            android:paddingLeft="@dimen/dp12"
+            android:layout_height="@dimen/dp48" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:layout_marginRight="@dimen/dp12"
+            android:layout_marginLeft="@dimen/dp12"
+            android:background="@color/gainsboro"/>
+        <ImageView
+            android:src="@drawable/tianjiatupian01"
+            android:id="@+id/iv_upload"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="@dimen/dp80"
+            android:layout_marginTop="@dimen/dp12"
+            android:layout_marginLeft="@dimen/dp12"
+            android:scaleType="fitXY"/>
 
 
-            <TextView
-                android:textSize="@dimen/sp20"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="2dp"
-                android:includeFontPadding="false"
-                android:textColor="@color/white"
-                android:text="充值"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_confirm"
+            android:text="提交"
+            android:background="@drawable/bg_btn_whent01"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
+            android:layout_marginTop="@dimen/dp30"
+            android:layout_marginBottom="@dimen/dp20"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="@dimen/sp18"
+            android:textColor="@color/gray_8f"/>
 
 
-    </RelativeLayout>
-
-
-    <ImageView
-        android:src="@drawable/upload_image"
-        android:id="@+id/iv_upload"
-        android:layout_width="@dimen/dp180"
-        android:layout_height="@dimen/dp180" />
-
-    <EditText
-        android:id="@+id/et_count"
-        android:background="@null"
-        android:hint="请输入充值数量"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/bt_confirm"
-        android:text="充值"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    </LinearLayout>
 
 
 </LinearLayout>

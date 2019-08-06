@@ -18,6 +18,7 @@ import demo.great.zhang.poket.DealRecodeActivity;
 import demo.great.zhang.poket.R;
 import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.base.BaseFragment;
+import demo.great.zhang.poket.utils.StringUtil;
 
 public class FragmentPersonal extends BaseFragment {
     @BindView(R.id.rl_header)
@@ -49,7 +50,9 @@ public class FragmentPersonal extends BaseFragment {
     @Override
     protected void initView(View contentView) {
         super.initView(contentView);
-        tvWaletName.setText(PoketApplication.currentBean.getWalletName());
+        if (!StringUtil.isEmpty(PoketApplication.currentBean.getWalletName())&&PoketApplication.currentBean.getWalletName()!=null){
+            tvWaletName.setText(PoketApplication.currentBean.getWalletName());
+        }
 
 
     }

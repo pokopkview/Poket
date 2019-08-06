@@ -26,6 +26,11 @@ public class WaletDetailActivity extends BaseActivity {
     TextView tvAddtime;
 
     @Override
+    public String title_text() {
+        return "我的钱包";
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.activity_wallet;
     }

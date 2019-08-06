@@ -15,23 +15,26 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import org.greenrobot.eventbus.EventBus;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import butterknife.ButterKnife;
 import demo.great.zhang.poket.LoginActivity;
 import demo.great.zhang.poket.MainActivity;
+import demo.great.zhang.poket.R;
 import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.net.HttpInterceptor;
+import demo.great.zhang.poket.utils.ClickUtils;
+import demo.great.zhang.poket.utils.StringUtil;
 import okhttp3.Call;
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -45,6 +48,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected LinkedHashMap<String,String> params;
 
     protected ProgressDialog mProgress;
+
+    public abstract String title_text();
+
+    public TextView title;
+    public ImageView back;
+    public boolean showBack(){
+        return true;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +72,29 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayout());
         ButterKnife.bind(this);
         initEvent();
+    }
+
+    public void onLayoutClick(View v){
+        if (ClickUtils.isContinuClick())return;
+        switch (v.getId()){
+            case R.id.back:
+                onBackPressed();
+                break;
+        }
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        back = findViewById(R.id.back);
+        if(!showBack())findViewById(R.id.back).setVisibility(View.INVISIBLE);
+        title = (TextView)findViewById(R.id.title);
+        if (!StringUtil.isEmpty(title_text())&&title!=null){
+            title.setText(title_text());
+        }
+    }
+    public void setHeadTitle(String title){
+        if (title!=null)this.title.setText(title);
     }
 
     @Override

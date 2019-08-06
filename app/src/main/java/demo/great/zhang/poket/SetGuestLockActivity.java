@@ -32,6 +32,11 @@ public class SetGuestLockActivity extends BaseActivity {
     private boolean isFirst = true;
 
     @Override
+    public String title_text() {
+        return null;
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.set_lock_layout;
     }

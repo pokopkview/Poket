@@ -29,6 +29,11 @@ public class GuestLockActivity extends BaseActivity {
     TextView tvSettingHint;
 
     @Override
+    public String title_text() {
+        return null;
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.guest_locak_layout;
     }

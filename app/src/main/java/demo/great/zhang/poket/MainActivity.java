@@ -46,6 +46,11 @@ public class MainActivity extends BaseActivity {
     BottomNavigationView navigation;
 
     @Override
+    public String title_text() {
+        return null;
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.activity_main;
     }

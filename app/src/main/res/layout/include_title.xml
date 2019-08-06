@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_top"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:layout_alignParentTop="true"
+    android:background="@drawable/zichan02" >
+
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/dp48"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:padding="15dp"
+            android:onClick="onLayoutClick"
+            android:src="@drawable/fanhui01" />
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="消息"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp18" />
+
+
+
+        <TextView
+            android:id="@+id/submit"
+            android:layout_width="@dimen/dp48"
+            android:layout_height="fill_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:onClick="onLayoutClick"
+            android:text="提交"
+            android:visibility="invisible" />
+
+    </LinearLayout>

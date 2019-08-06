@@ -52,6 +52,11 @@ public class NewActivity extends BaseActivity {
     TextView tvExchange;
 
     @Override
+    public String title_text() {
+        return "兑换中心";
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.safflower_layout;
     }

@@ -31,6 +31,11 @@ public class DealRecodeActivity extends BaseActivity {
     RecyclerView rlRecode;
 
     @Override
+    public String title_text() {
+        return "交易记录";
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.deal_recode_activity_layout;
     }

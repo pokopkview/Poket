@@ -71,6 +71,11 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
+    public String title_text() {
+        return null;
+    }
+
+    @Override
     protected void getCallBack(String response, int flag) {
         System.out.println(response);
         switch (flag){

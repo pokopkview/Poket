@@ -18,6 +18,11 @@ public class ReceivActivity extends BaseActivity {
     TextView tvClickCopy;
 
     @Override
+    public String title_text() {
+        return "收款方式";
+    }
+
+    @Override
     protected int getLayout() {
         return R.layout.activity_receivables;
     }

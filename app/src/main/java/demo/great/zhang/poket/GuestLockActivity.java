@@ -17,6 +17,9 @@ import butterknife.ButterKnife;
 import demo.great.zhang.poket.base.BaseActivity;
 import demo.great.zhang.poket.utils.SharePrefrenceUtils;
 
+/**
+ * 解锁界面
+ */
 public class GuestLockActivity extends BaseActivity {
     @BindView(R.id.l_display_view)
     GestureLockView lDisplayView;
@@ -48,7 +51,7 @@ public class GuestLockActivity extends BaseActivity {
             }
 
             @Override
-            public void onComplete(String result) {
+            public void onComplete(String result) {//手势划完时候得调用
                 if(SharePrefrenceUtils.getParam(mContext,"guestkey","").equals(result)){
                     showMsg("解锁成功！");
                     startActivity(new Intent(mContext,MainActivity.class));

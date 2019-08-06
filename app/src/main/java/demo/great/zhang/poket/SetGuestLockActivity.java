@@ -18,6 +18,9 @@ import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.base.BaseActivity;
 import demo.great.zhang.poket.utils.SharePrefrenceUtils;
 
+/**
+ * 设置解锁界面
+ */
 public class SetGuestLockActivity extends BaseActivity {
     @BindView(R.id.l_display_view)
     GestureLockView lDisplayView;

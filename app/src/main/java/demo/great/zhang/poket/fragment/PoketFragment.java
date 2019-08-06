@@ -1,9 +1,11 @@
 package demo.great.zhang.poket.fragment;
 
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -19,10 +23,12 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.superluo.textbannerlibrary.TextBannerView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+import com.zhy.http.okhttp.utils.L;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -43,7 +49,9 @@ import demo.great.zhang.poket.base.BaseFragment;
 import demo.great.zhang.poket.entity.MeberDetail;
 import demo.great.zhang.poket.entity.ResponseBean;
 import demo.great.zhang.poket.net.URLConst;
+import demo.great.zhang.poket.utils.FileUtils;
 import demo.great.zhang.poket.utils.GlideImageLoader;
+import demo.great.zhang.poket.utils.QRCodeUtil;
 import demo.great.zhang.poket.utils.SharePrefrenceUtils;
 import okhttp3.Call;
 
@@ -76,7 +84,8 @@ public class PoketFragment extends BaseFragment {
     Banner banner;
     @BindView(R.id.rl_md_list)
     RecyclerView rlMdList;
-    Unbinder unbinder2;
+    @BindView(R.id.tv_banner)
+    TextBannerView textBannerView;
 
     private String mID;
 
@@ -86,8 +95,33 @@ public class PoketFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        textBannerView.startViewAnimator();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        textBannerView.stopViewAnimator();
+    }
+
+    @Override
     protected void initNet() {
         mID = SharePrefrenceUtils.getParam(getAppActivity(),"meberid","").toString();
+        final Bitmap bitmap = QRCodeUtil.createQRCode("http://yd.ethereume.io/register?memberId="+PoketApplication.MEMBERID);
+        ivEqcode.setImageBitmap(bitmap);
+        ivEqcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(getContext());
+                View view = LayoutInflater.from(getContext()).inflate(R.layout.show_qc_layout,null,false);
+                ImageView imageView = view.findViewById(R.id.iv_show_code);
+                imageView.setImageBitmap(bitmap);
+                dialog.setContentView(view);
+                dialog.show();
+            }
+        });
 
         OkHttpUtils.post()
                 .url(URLConst.GETMYMONEY())
@@ -111,6 +145,10 @@ public class PoketFragment extends BaseFragment {
     }
 
     private void setView(final ResponseBean<MeberDetail> responseBean) {
+        List<String> wordbanner = new ArrayList<>();
+        wordbanner.add(responseBean.getData().getMessageInfo());
+        textBannerView.setDatas(wordbanner);
+
         tvMyMoney.setText(String.valueOf(responseBean.getData().getMember().getUsdtfee()));
         tvMyOwnMid.setText(String.valueOf(responseBean.getData().getMember().getNoUSDT()));
         tvPass.setText(responseBean.getData().getMember().getShoubiAddress());
@@ -204,5 +242,23 @@ public class PoketFragment extends BaseFragment {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    private void setDialogSize(final View mView){
+        mView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop,
+                                       int oldRight, int oldBottom) {
+                int heightNow = v.getHeight();//dialog当前的高度
+                int widthNow = v.getWidth();//dialog当前的宽度
+                int needWidth = (int) (getAppActivity().getWindowManager().getDefaultDisplay().getWidth() * 0.7);//最小宽度为屏幕的0.7倍
+                int needHeight = (int) (getAppActivity().getWindowManager().getDefaultDisplay().getHeight() * 0.4);//最大高度为屏幕的0.6倍
+                if (widthNow < needWidth || heightNow > needHeight){
+
+                    mView.setLayoutParams(new FrameLayout.LayoutParams(needWidth,
+                            needHeight));
+                }
+            }
+        });
     }
 }

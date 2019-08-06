@@ -81,7 +81,7 @@ public class LoginActivity extends BaseActivity {
                     if(responseBean.getCode().equals("0")){
                         PoketApplication.MEMBERID = responseBean.getData().getMemberId();
                         SharePrefrenceUtils.setParam(mContext,"meberid",PoketApplication.MEMBERID);
-                        if(SharePrefrenceUtils.getParam(mContext,"guestkey","")==null) {
+                        if(((String)SharePrefrenceUtils.getParam(mContext,"guestkey","")).isEmpty()) {
                             Intent intent = new Intent(mContext, SetGuestLockActivity.class);
                             startActivity(intent);
                         }else{

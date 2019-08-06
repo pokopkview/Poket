@@ -139,7 +139,6 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:visibility="invisible"
                     android:id="@+id/iv_eqcode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -168,6 +167,14 @@
             </LinearLayout>
 
         </LinearLayout>
+        <com.superluo.textbannerlibrary.TextBannerView
+            android:id="@+id/tv_banner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp30"
+            android:background="@color/dodgerblue"
+            app:setDirection="left_to_right"
+            app:setGravity="center"
+            app:setTextColor="@color/white"/>
 
 
         <LinearLayout

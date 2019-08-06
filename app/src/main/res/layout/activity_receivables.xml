@@ -102,7 +102,7 @@
         android:layout_marginRight="@dimen/dp12"
         android:textColor="@color/black"
         android:textSize="@dimen/sp12"
-        android:text="*请勿向上述地址充值任何非NAS资产(支持NRC-20协议币)，否则资产将不可找回。"/>
+        android:text="*请勿向上述地址充值任何非USDT资产(支持NRC-20协议币)，否则资产将不可找回。"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -32,7 +32,7 @@ public class SplaseActivity extends BaseActivity {
         @Override
         public void onFinish() {
             System.out.println(SharePrefrenceUtils.getParam(mContext,"meberid",""));
-            if(((String)SharePrefrenceUtils.getParam(mContext,"meberid","")).isEmpty()){
+            if(((String)SharePrefrenceUtils.getParam(mContext,"meberid","")).isEmpty()||((String)SharePrefrenceUtils.getParam(mContext,"guestkey","")).isEmpty()){
                 startActivity(new Intent(mContext, LoginActivity.class));
             }else{
                 startActivity(new Intent(mContext, GuestLockActivity.class));
@@ -48,8 +48,9 @@ public class SplaseActivity extends BaseActivity {
 
     @OnClick(R.id.tv_skip)
     public void onViewClicked() {
-        System.out.println(SharePrefrenceUtils.getParam(mContext,"meberid",""));
-        if(((String)SharePrefrenceUtils.getParam(mContext,"meberid","")).isEmpty()){
+        System.out.println("___"+SharePrefrenceUtils.getParam(mContext,"meberid",""));
+        System.out.println("___"+SharePrefrenceUtils.getParam(mContext,"guestkey",""));
+        if(((String)SharePrefrenceUtils.getParam(mContext,"meberid","")).isEmpty()||((String)SharePrefrenceUtils.getParam(mContext,"guestkey","")).isEmpty()){
             startActivity(new Intent(mContext, LoginActivity.class));
         }else{
             startActivity(new Intent(mContext, GuestLockActivity.class));

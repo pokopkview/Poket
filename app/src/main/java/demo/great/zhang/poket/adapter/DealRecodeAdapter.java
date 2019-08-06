@@ -36,11 +36,15 @@ public class DealRecodeAdapter extends RecyclerView.Adapter {
         System.out.println(dealRecode.getRemark());
         ((RecodeViewHolder) viewHolder).tvdetail.setText(dealRecode.getRemark());
         String times = ((RecodeViewHolder) viewHolder).tvTime.getText().toString();
-//        if(dealRecode!=null||dealRecode.getAddTime()!=null||!dealRecode.getAddTime().isEmpty()) {
-//            ((RecodeViewHolder) viewHolder).tvTime.setText(String.format(times, dealRecode.getAddTime().split(" ")[0], dealRecode.getAddTime().split(" ")[1]));
-//        }else{
-//            ((RecodeViewHolder) viewHolder).tvTime.setText("null");
-//        }
+        if(dealRecode!=null && dealRecode.getAddTime()!=null) {
+            if(!dealRecode.getAddTime().isEmpty()) {
+                ((RecodeViewHolder) viewHolder).tvTime.setText(String.format(times, dealRecode.getAddTime().split(" ")[0], dealRecode.getAddTime().split(" ")[1]));
+            }else{
+                ((RecodeViewHolder) viewHolder).tvTime.setText("null");
+            }
+        }else{
+            ((RecodeViewHolder) viewHolder).tvTime.setText("null");
+        }
     }
 
     @Override

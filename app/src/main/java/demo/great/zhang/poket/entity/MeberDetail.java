@@ -3,8 +3,17 @@ package demo.great.zhang.poket.entity;
 import java.util.List;
 
 public class MeberDetail {
+        private String messageInfo;
 
-        private MemberBean member;
+    public String getMessageInfo() {
+        return messageInfo;
+    }
+
+    public void setMessageInfo(String messageInfo) {
+        this.messageInfo = messageInfo;
+    }
+
+    private MemberBean member;
         private List<DbBean> db;
 
         public MemberBean getMember() {

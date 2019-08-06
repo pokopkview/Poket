@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
 
@@ -30,17 +31,35 @@
 
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <com.zhy.view.flowlayout.TagFlowLayout
         android:id="@+id/rl_select_words"
+        app:max_select="-1"
+        android:background="@color/lightgray"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="@dimen/dp120"/>
     <Button
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp18"
+        android:layout_marginTop="@dimen/dp3"
         android:id="@+id/bt_frush"
+        android:background="@color/nagative_blue"
         android:text="更新"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <android.support.v7.widget.RecyclerView
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:layout_marginTop="@dimen/dp3"
         android:id="@+id/rl_words"
+        app:max_select="-1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="@dimen/dp120"/>
+
+    <Button
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp18"
+        android:layout_marginTop="@dimen/dp3"
+        android:id="@+id/bt_confirm"
+        android:background="@color/nagative_blue"
+        android:text="提交"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

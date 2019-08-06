@@ -1,11 +1,19 @@
 package demo.great.zhang.poket;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.zhy.view.flowlayout.FlowLayout;
+import com.zhy.view.flowlayout.TagAdapter;
+import com.zhy.view.flowlayout.TagFlowLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,11 +29,13 @@ public class KeywordActivity extends BaseActivity {
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.rl_select_words)
-    RecyclerView rlSelectWords;
+    TagFlowLayout rlSelectWords;
     @BindView(R.id.bt_frush)
     Button btFrush;
     @BindView(R.id.rl_words)
-    RecyclerView rlWords;
+    TagFlowLayout rlWords;
+    @BindView(R.id.bt_confirm)
+    Button btConfirm;
 
     private List<String> tenwords = new ArrayList<>();
     private List<String> selectwords = new ArrayList<>();
@@ -45,17 +55,85 @@ public class KeywordActivity extends BaseActivity {
         for(int i =0;i<10;i++){
             tenwords.add(wordsList.get(new Random().nextInt(380)));
         }
-        WordsAdapter wordsAdapter = new WordsAdapter(tenwords,mContext);
-        final WordsAdapter wordsAdapter2 = new WordsAdapter(selectwords,mContext);
-        wordsAdapter.setListenner(new WordsAdapter.clickItem() {
+        final TagAdapter tagAdapter = new TagAdapter<String>(selectwords) {
             @Override
-            public void itemClick(int position) {
-                wordsAdapter2.addWords(tenwords.get(position));
+            public View getView(FlowLayout parent, int position, String s) {
+                View view = LayoutInflater.from(mContext).inflate(R.layout.words_layout,parent,false);
+                TextView tvWord = view.findViewById(R.id.tv_words);
+                System.out.println("position:"+position);
+                tvWord.setText(selectwords.get(position));
+                return view;
+            }
+        };
+        rlSelectWords.setAdapter(tagAdapter);
+        final TagAdapter tagAdapter2 = new TagAdapter<String>(tenwords) {
+            @Override
+            public View getView(FlowLayout parent, int position, String s) {
+                View view = LayoutInflater.from(mContext).inflate(R.layout.words_layout,parent,false);
+                TextView tvWord = view.findViewById(R.id.tv_words);
+                System.out.println(position+"---"+(tenwords.size()-1));
+                if(position==tenwords.size()-1){
+                    System.out.println(position+"__"+(tenwords.size()-1));
+                }
+                tvWord.setText(tenwords.get(position));
+                return view;
+            }
+        };
+
+        rlWords.setAdapter(tagAdapter2);
+        rlWords.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
+            @Override
+            public boolean onTagClick(View view, int position, FlowLayout parent) {
+                if(selectwords.size()>9){
+                    showMsg("最多10个词汇！");
+                    return false;
+                }
+                selectwords.add(tenwords.get(position));
+                tagAdapter.notifyDataChanged();
+                tenwords.remove(position);
+                tagAdapter2.notifyDataChanged();
+
+                return false;
             }
         });
-        rlWords.setAdapter(wordsAdapter);
-        rlSelectWords.setLayoutManager(new GridLayoutManager(mContext,4));
-        rlWords.setLayoutManager(new GridLayoutManager(mContext,4));
-        rlSelectWords.setAdapter(wordsAdapter2);
+        rlSelectWords.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
+            @Override
+            public boolean onTagClick(View view, int position, FlowLayout parent) {
+                tenwords.add(selectwords.get(position));
+                tagAdapter2.notifyDataChanged();
+                selectwords.remove(position);
+                tagAdapter.notifyDataChanged();
+                return false;
+            }
+        });
+        btFrush.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tenwords.clear();
+                for(int i =0;i<10;i++){
+                    tenwords.add(wordsList.get(new Random().nextInt(380)));
+                }
+                tagAdapter2.notifyDataChanged();
+            }
+        });
+        btConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext,SetGuestLockActivity.class));
+            }
+        });
+
+//        WordsAdapter wordsAdapter = new WordsAdapter(tenwords,mContext);
+//        final WordsAdapter wordsAdapter2 = new WordsAdapter(selectwords,mContext);
+//        wordsAdapter.setListenner(new WordsAdapter.clickItem() {
+//            @Override
+//            public void itemClick(int position) {
+//                wordsAdapter2.addWords(tenwords.get(position));
+//            }
+//        });
+//        rlWords.setAdapter(wordsAdapter);
+//        rlSelectWords.setLayoutManager(new GridLayoutManager(mContext,4));
+//        rlWords.setLayoutManager(new GridLayoutManager(mContext,4));
+//        rlSelectWords.setAdapter(wordsAdapter2);
     }
 }

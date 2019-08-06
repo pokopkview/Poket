@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import demo.great.zhang.poket.entity.MeberDetail;
 import demo.great.zhang.poket.net.HttpInterceptor;
+import demo.great.zhang.poket.utils.SharePrefrenceUtils;
 import okhttp3.OkHttpClient;
 
 public class PoketApplication extends Application {
@@ -34,6 +35,9 @@ public class PoketApplication extends Application {
                 .addNetworkInterceptor(interceptor)
                 .build();
         OkHttpUtils.initClient(okHttpClient);
+        if(!((String)SharePrefrenceUtils.getParam(this,"meberid","")).isEmpty()){
+            MEMBERID = SharePrefrenceUtils.getParam(this,"meberid","").toString();
+        }
     }
 
 

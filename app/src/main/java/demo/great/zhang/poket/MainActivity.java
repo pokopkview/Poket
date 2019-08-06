@@ -19,6 +19,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
+import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.base.BaseActivity;
 import demo.great.zhang.poket.base.BaseFragment;
 import demo.great.zhang.poket.eventmsg.Meberid;
@@ -61,7 +62,7 @@ public class MainActivity extends BaseActivity {
         fragmentSecon = new FragmentNew();
         fragmentThrid = new FragmentPersonal();
         Bundle bundle = new Bundle();
-        bundle.putString("meberid",getIntent().getStringExtra("meberid"));
+        bundle.putString("meberid", PoketApplication.MEMBERID);
         fragmentfirst.setArguments(bundle);
         fragments = new BaseFragment[]{fragmentfirst, fragmentSecon, fragmentThrid};
         lastfragment = 0;

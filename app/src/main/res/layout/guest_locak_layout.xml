@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--设置手势解锁时提示view-->
+    <com.wangnan.library.GestureLockView
+        android:layout_centerInParent="true"
+        android:id="@+id/l_display_view"
+        app:normal_color="@color/black"
+        app:press_color="@color/nagative_blue"
+        app:error_color="@color/red"
+        app:is_use_animation="true"
+        app:animation_scale_mode="normal"
+        android:layout_width="300dp"
+        android:layout_height="300dp"/>
+
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/tv_setting_hint"
+        android:id="@+id/iv_head_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textSize="@dimen/sp18"
+        android:layout_above="@+id/l_display_view"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tv_setting_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="请解锁钱包"/>
+
+</RelativeLayout>

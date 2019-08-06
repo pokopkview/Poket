@@ -15,6 +15,7 @@
         android:layout_marginTop="@dimen/dp12"/>
 
     <TextView
+        android:id="@+id/nas_all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1259143.52"
@@ -26,14 +27,16 @@
 
    
     <TextView
+        android:id="@+id/tv_current_step"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="第147阶段"
+        android:text="第%s阶段"
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:textSize="@dimen/sp14"
         android:layout_marginTop="@dimen/dp12"/>
     <LinearLayout
+        android:id="@+id/ll_tips"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp48"
         android:orientation="horizontal"
@@ -82,6 +85,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_detail"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp48"
         android:orientation="horizontal"
@@ -92,6 +96,7 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/tv_folow"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -103,6 +108,7 @@
             android:textColor="@color/white"/>
 
         <TextView
+            android:id="@+id/tv_broad"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -114,6 +120,7 @@
             android:textColor="@color/white"/>
 
         <TextView
+            android:id="@+id/tv_lucy"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -138,6 +145,7 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/tv_check"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp30"
             android:text="查看奖池详情"
@@ -186,6 +194,7 @@
            android:textColor="@color/white"/>
 
        <TextView
+           android:id="@+id/tv_waket_ad"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="sdfasdfasdfsdfsdaggasd"
@@ -197,6 +206,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/tv_exchange"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="@dimen/dp48"
@@ -220,6 +230,7 @@
             android:textSize="@dimen/sp16"/>
     </LinearLayout>
     <TextView
+        android:id="@+id/tv_success_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -227,9 +238,10 @@
         android:layout_gravity="right"
         android:gravity="right"
         android:layout_marginRight="@dimen/dp30"
-        android:text="您成功推荐0人"/>
+        android:text="您成功推荐%s人"/>
 
     <TextView
+        android:id="@+id/tv_success_get"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp48"
         android:textColor="@color/white"
@@ -237,5 +249,5 @@
         android:layout_gravity="right"
         android:gravity="right"
         android:layout_marginRight="@dimen/dp30"
-        android:text="您收益0"/>
+        android:text="您收益%s"/>
 </LinearLayout>

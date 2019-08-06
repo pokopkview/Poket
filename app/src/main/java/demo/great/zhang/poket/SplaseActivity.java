@@ -9,6 +9,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import demo.great.zhang.poket.base.BaseActivity;
+import demo.great.zhang.poket.utils.SharePrefrenceUtils;
 
 public class SplaseActivity extends BaseActivity {
     @BindView(R.id.tv_skip)
@@ -30,7 +31,12 @@ public class SplaseActivity extends BaseActivity {
 
         @Override
         public void onFinish() {
-            startActivity(new Intent(mContext, LoginActivity.class));
+            System.out.println(SharePrefrenceUtils.getParam(mContext,"meberid",""));
+            if(((String)SharePrefrenceUtils.getParam(mContext,"meberid","")).isEmpty()){
+                startActivity(new Intent(mContext, LoginActivity.class));
+            }else{
+                startActivity(new Intent(mContext, GuestLockActivity.class));
+            }
             finish();
         }
     };
@@ -42,7 +48,12 @@ public class SplaseActivity extends BaseActivity {
 
     @OnClick(R.id.tv_skip)
     public void onViewClicked() {
-        startActivity(new Intent(mContext, LoginActivity.class));
+        System.out.println(SharePrefrenceUtils.getParam(mContext,"meberid",""));
+        if(((String)SharePrefrenceUtils.getParam(mContext,"meberid","")).isEmpty()){
+            startActivity(new Intent(mContext, LoginActivity.class));
+        }else{
+            startActivity(new Intent(mContext, GuestLockActivity.class));
+        }
         countDownTimer.cancel();
         finish();
     }

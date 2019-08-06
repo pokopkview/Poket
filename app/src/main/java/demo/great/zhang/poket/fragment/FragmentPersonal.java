@@ -1,5 +1,6 @@
 package demo.great.zhang.poket.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import demo.great.zhang.poket.DealRecodeActivity;
 import demo.great.zhang.poket.R;
+import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.base.BaseFragment;
 
 public class FragmentPersonal extends BaseFragment {
@@ -43,6 +46,13 @@ public class FragmentPersonal extends BaseFragment {
         return R.layout.my_fragment_layout;
     }
 
+    @Override
+    protected void initView(View contentView) {
+        super.initView(contentView);
+        tvWaletName.setText(PoketApplication.currentBean.getWalletName());
+
+
+    }
 
     @OnClick({R.id.rl_header, R.id.iv_head_icon, R.id.tv_walet_name, R.id.tv_current_walet, R.id.iv_more, R.id.ll_money_center, R.id.ll_mywalet, R.id.ll_recod, R.id.ll_newcomer, R.id.ll_about_as})
     public void onViewClicked(View view) {
@@ -62,6 +72,7 @@ public class FragmentPersonal extends BaseFragment {
             case R.id.ll_mywalet:
                 break;
             case R.id.ll_recod:
+                startActivity(new Intent(getAppActivity(), DealRecodeActivity.class));
                 break;
             case R.id.ll_newcomer:
                 break;

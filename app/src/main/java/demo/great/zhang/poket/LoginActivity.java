@@ -20,6 +20,7 @@ import demo.great.zhang.poket.base.BaseActivity;
 import demo.great.zhang.poket.entity.LoginBean;
 import demo.great.zhang.poket.entity.ResponseBean;
 import demo.great.zhang.poket.net.URLConst;
+import demo.great.zhang.poket.utils.SharePrefrenceUtils;
 import okhttp3.Call;
 
 public class LoginActivity extends BaseActivity {
@@ -78,10 +79,15 @@ public class LoginActivity extends BaseActivity {
                     Type type = new TypeToken<ResponseBean<LoginBean>>(){}.getType();
                     ResponseBean<LoginBean> responseBean = new Gson().fromJson(response,type);
                     if(responseBean.getCode().equals("0")){
-                        Intent intent = new Intent(mContext,MainActivity.class);
                         PoketApplication.MEMBERID = responseBean.getData().getMemberId();
-                        intent.putExtra("meberid",responseBean.getData().getMemberId());
-                        startActivity(intent);
+                        SharePrefrenceUtils.setParam(mContext,"meberid",PoketApplication.MEMBERID);
+                        if(SharePrefrenceUtils.getParam(mContext,"guestkey","")==null) {
+                            Intent intent = new Intent(mContext, SetGuestLockActivity.class);
+                            startActivity(intent);
+                        }else{
+                            Intent intent = new Intent(mContext, GuestLockActivity.class);
+                            startActivity(intent);
+                        }
                         finish();
                     }else{
                         showMsg(responseBean.getText());

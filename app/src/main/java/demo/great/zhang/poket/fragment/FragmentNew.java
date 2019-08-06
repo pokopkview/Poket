@@ -42,23 +42,5 @@ public class FragmentNew extends BaseFragment {
     protected void initNet() {
 
 
-        OkHttpUtils.post()
-                .url(URLConst.GETREDFLOWER())
-                .addParams("memberId", PoketApplication.MEMBERID)
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        System.out.println(e.getMessage());
-//                        showMsg("未知错误");
-//                        dismissProgress();
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        System.out.println(response);
-
-                    }
-                });
     }
 }

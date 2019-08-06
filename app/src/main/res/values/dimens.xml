@@ -28,6 +28,7 @@
     <dimen name="dp100">100dp</dimen>
     <dimen name="dp120">120dp</dimen>
     <dimen name="dp180">180dp</dimen>
+    <dimen name="dp280">280dp</dimen>
 
 
     <dimen name="sp10">10sp</dimen>

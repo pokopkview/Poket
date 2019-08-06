@@ -9,10 +9,11 @@
 
 
     <TextView
+        android:textColor="@color/white"
         android:textSize="@dimen/sp16"
         android:background="@color/gainsboro"
         android:id="@+id/tv_skip"
-        android:text="3 秒 跳 过"
+        android:text="3 秒 跳过"
         android:layout_marginRight="@dimen/dp24"
         android:layout_marginTop="@dimen/dp30"
         android:layout_alignParentRight="true"

@@ -33,14 +33,18 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import demo.great.zhang.poket.ChargeActivity;
 import demo.great.zhang.poket.DePositMoneyActivity;
+import demo.great.zhang.poket.KeywordActivity;
 import demo.great.zhang.poket.R;
 import demo.great.zhang.poket.ReceivActivity;
+import demo.great.zhang.poket.WaletDetailActivity;
 import demo.great.zhang.poket.adapter.DBAdapter;
+import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.base.BaseFragment;
 import demo.great.zhang.poket.entity.MeberDetail;
 import demo.great.zhang.poket.entity.ResponseBean;
 import demo.great.zhang.poket.net.URLConst;
 import demo.great.zhang.poket.utils.GlideImageLoader;
+import demo.great.zhang.poket.utils.SharePrefrenceUtils;
 import okhttp3.Call;
 
 public class PoketFragment extends BaseFragment {
@@ -83,7 +87,8 @@ public class PoketFragment extends BaseFragment {
 
     @Override
     protected void initNet() {
-        mID = getArguments().getString("meberid");
+        mID = SharePrefrenceUtils.getParam(getAppActivity(),"meberid","").toString();
+
         OkHttpUtils.post()
                 .url(URLConst.GETMYMONEY())
                 .addParams("memberId", mID)
@@ -97,9 +102,9 @@ public class PoketFragment extends BaseFragment {
                     @Override
                     public void onResponse(String response, int id) {
                         System.out.println(response);
-                        Type type = new TypeToken<ResponseBean<MeberDetail>>() {
-                        }.getType();
+                        Type type = new TypeToken<ResponseBean<MeberDetail>>() {}.getType();
                         ResponseBean<MeberDetail> responseBean = new Gson().fromJson(response, type);
+                        PoketApplication.currentBean = responseBean.getData().getMember();
                         setView(responseBean);
                     }
                 });
@@ -130,6 +135,8 @@ public class PoketFragment extends BaseFragment {
         tvClickCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+//                startActivity(new Intent(getAppActivity(), KeywordActivity.class));
                 String address = tvPass.getText().toString();
                 if(copy(address)){
                     getAppActivity().showMsg("已复制到粘贴板");
@@ -161,7 +168,12 @@ public class PoketFragment extends BaseFragment {
                 startActivity(intent);
             }
         });
-
+        myPoket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getAppActivity(), WaletDetailActivity.class));
+            }
+        });
     }
 
 

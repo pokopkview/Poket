@@ -1,0 +1,61 @@
+package demo.great.zhang.poket;
+
+import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import demo.great.zhang.poket.adapter.WordsAdapter;
+import demo.great.zhang.poket.base.BaseActivity;
+
+public class KeywordActivity extends BaseActivity {
+    @BindView(R.id.rl_header)
+    RelativeLayout rlHeader;
+    @BindView(R.id.rl_select_words)
+    RecyclerView rlSelectWords;
+    @BindView(R.id.bt_frush)
+    Button btFrush;
+    @BindView(R.id.rl_words)
+    RecyclerView rlWords;
+
+    private List<String> tenwords = new ArrayList<>();
+    private List<String> selectwords = new ArrayList<>();
+    List<String> wordsList;
+            String [] words = {"death","agree","arm","mother","across","quite","anything","town","past","view","society","manage","answer","break","organize","half","fire","lose","money","stop","actual","already","effort","wait","department","able","political","learn","air","together","shall","cover","common","subject","draw","short","wife","treat","limit","road","letter","color","behind","produce","send","ter","total","university","rise","century","success","minute","remember","purpose","test","fight","watch","situation","south","ago","difference","stage","father","table","rest","bear","entire","market","prepare","explain","offer","plant","charge","ground","west","picture","hard","front","lie","modern","dark","surface","rule","regard","dance","peace","observe","future","wall","farm","claim","firm","operation","further","pressure","property","morning","amount","top","outside","piece","sometimes","beauty","trade","fear","demand","wonder","list","accept","judge","paint","mile","soon","responsible","allow","secretary","heart","union","slow","island","enter","drink","story","experiment","stay","paper","space","apply","decide","share","desire","spend","sign","therefore","various","visit","supply","officer","doubt","private","immediate","wish","contain","feed","raise","describe","ready","horse","son","exist","north","suggest","station","effective","food","deep","wide","alone","character","English","happy","critic","unit","product","respect","drop","nor","fill","cold","represent","sudden","basic","kill","fine","trouble","mark","single","press","heavy","attempt","origin","standard","everything","committee","moral","black","red","bad","earth","accord","else","mere","die","remark","basis","except","equal","east","event","center","let","side","try","provide","continue","name","certain","power","pay","result","question","study","woman","member","until","far","night","always","service","away","report","something","company","week","church","toward","start","social","room","figure","nature","though","young","less","enough","almost","read","include","president","nothing","yet","better","big","boy","cost","business","value","second","why","clear","expect","family","complete","act","sense","mind","experience","art","next","near","direct","car","law","industry","important","girl","several","matter","usual","rather","per","often","kind","among","white","reason","action","return","foot","care","simple","within","love","human","along","appear","doctor","believe","speak","active","student","month","drive","concern","best","door","hope","example","inform","body","ever","least","probable","understand","reach","effect","different","idea","whole","control","condition","field","pass","fall","note","special","talk","particular","today","measure","walk","teach","low","hour","type","carry","rate","remain","full","street","easy","although","record","sit","determine","level","local","sure","receive","thus","moment","spirit","train","college","religion","perhaps","music","grow","free","cause","serve","age","book","board","recent","sound","office","cut","step","class","true","history","position","above","strong","friend","necessary","add","court","deal","tax","support","party","whether","either","land","material","happen","education","country","bring"};
+
+
+
+    @Override
+    protected int getLayout() {
+        return R.layout.key_words_layout;
+    }
+
+    @Override
+    protected void initEvent() {
+        wordsList = Arrays.asList(words);
+        for(int i =0;i<10;i++){
+            tenwords.add(wordsList.get(new Random().nextInt(380)));
+        }
+        WordsAdapter wordsAdapter = new WordsAdapter(tenwords,mContext);
+        final WordsAdapter wordsAdapter2 = new WordsAdapter(selectwords,mContext);
+        wordsAdapter.setListenner(new WordsAdapter.clickItem() {
+            @Override
+            public void itemClick(int position) {
+                wordsAdapter2.addWords(tenwords.get(position));
+            }
+        });
+        rlWords.setAdapter(wordsAdapter);
+        rlSelectWords.setLayoutManager(new GridLayoutManager(mContext,4));
+        rlWords.setLayoutManager(new GridLayoutManager(mContext,4));
+        rlSelectWords.setAdapter(wordsAdapter2);
+    }
+}

@@ -10,23 +10,27 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.lang.reflect.Type;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.base.BaseActivity;
+import demo.great.zhang.poket.entity.ResponseBean;
 import demo.great.zhang.poket.entity.UploadImgBack;
 import demo.great.zhang.poket.net.URLConst;
 import demo.great.zhang.poket.utils.FileUtils;
@@ -45,6 +49,12 @@ public class DePositMoneyActivity extends BaseActivity {
     private static final int ALBUM_REQUEST_CODE = 1;
     @BindView(R.id.iv_upload)
     ImageView ivUpload;
+    @BindView(R.id.et_count)
+    EditText etCount;
+    @BindView(R.id.bt_confirm)
+    Button btConfirm;
+
+    private String imgurl;
 
 
     @Override
@@ -54,7 +64,38 @@ public class DePositMoneyActivity extends BaseActivity {
 
     @Override
     protected void initEvent() {
+        btConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OkHttpUtils.post()
+                        .url(URLConst.GETMONEY())
+                        .addParams("usdtpz",imgurl)//image url
+                        .addParams("usdtnum",etCount.getText().toString())//数量 这里是edittext 获取数据
+                        .addParams("memberId", PoketApplication.MEMBERID)//meberid
+                        .build()
+                        .execute(new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
+                                System.out.println(e.getMessage());
+                        showMsg("充值失败！");
+//                        dismissProgress();
+                            }
 
+                            @Override
+                            public void onResponse(String response, int id) {
+                                System.out.println(response);
+                                Type type = new TypeToken<ResponseBean<String>>() {
+                                }.getType();
+                                ResponseBean<String> imgBack = new Gson().fromJson(response, type);
+                                if(imgBack.getCode().equals("0")){
+                                    showMsg("充值成功！");
+                                }else{
+                                    showMsg(imgBack.getText());
+                                }
+                            }
+                        });
+            }
+        });
     }
 
     /**
@@ -75,7 +116,7 @@ public class DePositMoneyActivity extends BaseActivity {
                     try {
                         final File file = FileUtils.uriToFile(uri, DePositMoneyActivity.this);
                         System.out.println(file.getAbsolutePath());
-                        Bitmap bitmap = BitmapFactory.decodeStream(DePositMoneyActivity.this.getContentResolver()           .openInputStream(uri));
+                        Bitmap bitmap = BitmapFactory.decodeStream(DePositMoneyActivity.this.getContentResolver().openInputStream(uri));
                         ivUpload.setImageBitmap(bitmap);
                         new Thread() {
                             @Override
@@ -109,26 +150,10 @@ public class DePositMoneyActivity extends BaseActivity {
     }
 
     private void takenMoney(String response) {
-        UploadImgBack imgBack = new Gson().fromJson(response,UploadImgBack.class);
-        OkHttpUtils.post()
-                .url(URLConst.GETLOGIN())
-                .addParams("usdtpz",imgBack.getImg())//image url
-                .addParams("usdtnum","")//数量 这里是edittext 获取数据
-                .addParams("memberId", PoketApplication.MEMBERID)//meberid
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        System.out.println(e.getMessage());
-//                        showMsg("未知错误");
-//                        dismissProgress();
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-
-                    }
-                });
+        Type type = new TypeToken<ResponseBean<UploadImgBack>>() {
+        }.getType();
+        ResponseBean<UploadImgBack> imgBack = new Gson().fromJson(response, type);
+        imgurl = imgBack.getData().getImg();
 
     }
 
@@ -177,4 +202,5 @@ public class DePositMoneyActivity extends BaseActivity {
         }
         return null;
     }
+
 }

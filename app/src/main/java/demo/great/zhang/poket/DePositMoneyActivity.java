@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -85,7 +83,7 @@ public class DePositMoneyActivity extends BaseActivity {
                     return;
                 }
 
-
+                showProgress();
                 OkHttpUtils.post()
                         .url(URLConst.GETMONEY())
                         .addParams("usdtpz",imgurl)//image url
@@ -97,11 +95,12 @@ public class DePositMoneyActivity extends BaseActivity {
                             public void onError(Call call, Exception e, int id) {
                                 System.out.println(e.getMessage());
                         showMsg("充值失败！");
-//                        dismissProgress();
+                        dismissProgress();
                             }
 
                             @Override
                             public void onResponse(String response, int id) {
+                                dismissProgress();
                                 System.out.println("充值"+response);
                                 Type type = new TypeToken<ResponseBean<String>>() {
                                 }.getType();

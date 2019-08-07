@@ -122,7 +122,7 @@ public class PoketFragment extends BaseFragment {
                 dialog.show();
             }
         });
-
+        getAppActivity().showProgress();
         OkHttpUtils.post()
                 .url(URLConst.GETMYMONEY())
                 .addParams("memberId", mID)
@@ -139,6 +139,7 @@ public class PoketFragment extends BaseFragment {
                         Type type = new TypeToken<ResponseBean<MeberDetail>>() {}.getType();
                         ResponseBean<MeberDetail> responseBean = new Gson().fromJson(response, type);
                         PoketApplication.currentBean = responseBean.getData().getMember();
+                        getAppActivity().dismissProgress();
                         setView(responseBean);
                     }
                 });

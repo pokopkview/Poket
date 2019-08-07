@@ -45,6 +45,13 @@ public class DealRecodeAdapter extends RecyclerView.Adapter {
         }else{
             ((RecodeViewHolder) viewHolder).tvTime.setText("null");
         }
+        if(dealRecode.getRemark().startsWith("+")){
+            ((RecodeViewHolder) viewHolder).colorView.setBackgroundColor(mContext.getResources().getColor(R.color.green));
+        }else{
+
+            ((RecodeViewHolder) viewHolder).colorView.setBackgroundColor(mContext.getResources().getColor(R.color.red));
+        }
+
     }
 
     @Override

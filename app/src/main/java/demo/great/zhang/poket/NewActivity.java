@@ -126,6 +126,7 @@ public class NewActivity extends BaseActivity {
 
                     @Override
                     public void confirm() {
+                        showProgress();
                         OkHttpUtils.post()
                                 .url(URLConst.GETNMS())
                                 .addParams("memberId",PoketApplication.MEMBERID)
@@ -136,11 +137,12 @@ public class NewActivity extends BaseActivity {
                                     public void onError(Call call, Exception e, int id) {
                                         System.out.println(e.getMessage());
                         showMsg("未知错误");
-//                        dismissProgress();
+                        dismissProgress();
                                     }
 
                                     @Override
                                     public void onResponse(String response, int id) {
+                                        dismissProgress();
                                         System.out.println(response);
                                         if(response!=null) {
                                             Type type = new TypeToken<ResponseBean<String>>() {

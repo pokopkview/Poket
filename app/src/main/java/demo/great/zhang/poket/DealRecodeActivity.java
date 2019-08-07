@@ -1,6 +1,7 @@
 package demo.great.zhang.poket;
 
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.RelativeLayout;
@@ -25,8 +26,6 @@ import demo.great.zhang.poket.net.URLConst;
 import okhttp3.Call;
 
 public class DealRecodeActivity extends BaseActivity {
-    @BindView(R.id.rl_header)
-    RelativeLayout rlHeader;
     @BindView(R.id.rl_recode)
     RecyclerView rlRecode;
 
@@ -42,7 +41,7 @@ public class DealRecodeActivity extends BaseActivity {
 
     @Override
     protected void initEvent() {
-
+        showProgress();
         OkHttpUtils.post()
                 .url(URLConst.GETDEALDETAIL())
                 .addParams("memberId", PoketApplication.MEMBERID)
@@ -51,16 +50,20 @@ public class DealRecodeActivity extends BaseActivity {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         System.out.println(e.getMessage());
+                        dismissProgress();
+                        showMsg("失败");
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
                         System.out.println(response);
+                        dismissProgress();
                         Type type = new TypeToken<ResponseBean<List<DealRecode>>>(){}.getType();
                         ResponseBean<List<DealRecode>> responseBean = new Gson().fromJson(response,type);
                         System.out.println(responseBean.getData().size());
                         DealRecodeAdapter dealRecodeAdapter = new DealRecodeAdapter(responseBean.getData(),mContext);
                         rlRecode.setAdapter(dealRecodeAdapter);
+                        rlRecode.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL));
                         rlRecode.setLayoutManager(new LinearLayoutManager(mContext));
 
                     }

@@ -41,6 +41,10 @@ public class FragmentPersonal extends BaseFragment {
     LinearLayout llNewcomer;
     @BindView(R.id.ll_about_as)
     LinearLayout llAboutAs;
+    @BindView(R.id.iv_setting)
+    ImageView ivSetting;
+    @BindView(R.id.ll_inviter)
+    LinearLayout llInviter;
 
     @Override
     protected Object getContentLayout() {
@@ -50,7 +54,7 @@ public class FragmentPersonal extends BaseFragment {
     @Override
     protected void initView(View contentView) {
         super.initView(contentView);
-        if (!StringUtil.isEmpty(PoketApplication.currentBean.getWalletName())&&PoketApplication.currentBean.getWalletName()!=null){
+        if (!StringUtil.isEmpty(PoketApplication.currentBean.getWalletName()) && PoketApplication.currentBean.getWalletName() != null) {
             tvWaletName.setText(PoketApplication.currentBean.getWalletName());
         }
 
@@ -81,6 +85,12 @@ public class FragmentPersonal extends BaseFragment {
                 break;
             case R.id.ll_about_as:
                 break;
+            case R.id.iv_setting:
+                break;
+            case R.id.ll_inviter:
+
+                break;
         }
     }
+
 }

@@ -4,17 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
-
+    <!--android:background="@color/dodgerblue"-->
     <RelativeLayout
         android:id="@+id/rl_header"
         android:layout_width="match_parent"
-        android:background="@color/dodgerblue"
-        android:layout_height="54dp">
 
+        android:layout_height="48dp">
+        <!--android:background="@drawable/zichan02"-->
         <LinearLayout
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:gravity="center"
+            android:background="@drawable/zichan02"
+            android:layout_height="48dp">
 
 
             <TextView
@@ -30,12 +32,13 @@
 
 
     </RelativeLayout>
-
+    <!--android:background="@color/dodgerblue"-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp320"
         android:orientation="vertical"
-        android:background="@color/dodgerblue">
+        android:paddingTop="@dimen/dp12"
+        android:background="@drawable/zichan02">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,7 +59,7 @@
                 android:id="@+id/my_poket"
                 android:layout_width="@dimen/dp100"
                 android:layout_height="@dimen/dp32"
-                android:background="@drawable/bg_btn_simple"
+                android:background="@drawable/simple_shape01"
                 android:layout_marginRight="-12dp"
                 android:orientation="horizontal">
 
@@ -91,7 +94,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_margin="@dimen/dp12"
-            android:background="@drawable/subtype_bg">
+            android:background="@drawable/simple_shape01">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -167,11 +170,11 @@
             </LinearLayout>
 
         </LinearLayout>
+        <!--android:background="@color/dodgerblue"-->
         <com.superluo.textbannerlibrary.TextBannerView
             android:id="@+id/tv_banner"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp30"
-            android:background="@color/dodgerblue"
             app:setDirection="left_to_right"
             app:setGravity="center"
             app:setTextColor="@color/white"/>

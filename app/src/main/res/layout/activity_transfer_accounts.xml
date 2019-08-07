@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginTop="@dimen/dp12"
-        android:background="@color/darkgray"/>
+        android:background="@color/gainsboro"/>
 
 
     <TextView
@@ -61,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginTop="@dimen/dp12"
-        android:background="@color/darkgray"/>
+        android:background="@color/gainsboro"/>
 
 
     <TextView
@@ -95,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginTop="@dimen/dp12"
-        android:background="@color/darkgray"/>
+        android:background="@color/gainsboro"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -133,7 +133,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginTop="@dimen/dp12"
-        android:background="@color/darkgray"/>
+        android:background="@color/gainsboro"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -187,7 +187,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="@dimen/sp14"
-            android:background="@color/blue"
+            android:background="@color/dodgerblue"
             android:textColor="@color/white"  />
 
     </LinearLayout>

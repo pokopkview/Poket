@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/cadetblue"
         android:orientation="vertical">
 
@@ -31,6 +31,7 @@
             android:layout_marginRight="@dimen/dp12"
             android:layout_marginLeft="@dimen/dp12"
             android:background="@color/gainsboro"/>
+
         <ImageView
             android:src="@drawable/tianjiatupian01"
             android:id="@+id/iv_upload"
@@ -39,7 +40,12 @@
             android:layout_marginTop="@dimen/dp12"
             android:layout_marginLeft="@dimen/dp12"
             android:scaleType="fitXY"/>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:textColor="@color/white"
+            android:text="上传凭证"/>
 
 
         <Button

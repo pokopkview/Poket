@@ -24,15 +24,17 @@
             android:gravity="center"
             android:text="收款"
             android:textSize="@dimen/sp20"
-            android:background="@color/nagative_blue"
+            android:background="@color/paleturquoise"
             android:layout_weight="1"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <TextView
-            android:background="@color/darkcyan"
+            android:background="@color/gray_8f"
             android:textSize="@dimen/sp20"
             android:gravity="center"
             android:text="转账"
+            android:textColor="@color/white"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />

@@ -29,7 +29,7 @@
     <dimen name="dp120">120dp</dimen>
     <dimen name="dp180">180dp</dimen>
     <dimen name="dp280">280dp</dimen>
-
+    <dimen name="dp320">320dp</dimen>
 
     <dimen name="sp10">10sp</dimen>
     <dimen name="sp12">12sp</dimen>

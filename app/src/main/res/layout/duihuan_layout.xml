@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="兑换WITI"
+        android:text="兑换NMST"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginTop="@dimen/dp30"

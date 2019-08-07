@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/include_title"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -90,9 +91,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="@dimen/dp40"
-            android:layout_marginLeft="@dimen/dp12"
             android:textColor="@color/white"
-            android:layout_gravity="center"
+            android:layout_gravity="bottom"
             android:gravity="center"
             android:background="@color/deepskyblue"
             android:text="创建钱包"/>
@@ -101,9 +101,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="@dimen/dp40"
-            android:layout_marginLeft="@dimen/dp12"
             android:textColor="@color/white"
-            android:layout_gravity="center"
+            android:layout_gravity="bottom"
             android:gravity="center"
             android:background="@color/gray_8f"
             android:text="导入钱包"/>

@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="使用一个钱包地址既可接收"
+            android:text="请转入以下钱包地址只接收USDT"
             android:textSize="@dimen/sp14"
             android:layout_gravity="center"
             android:gravity="center"
@@ -37,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="NRC-20代币"
+            android:visibility="gone"
             android:textSize="@dimen/sp14"
             android:layout_gravity="center"
             android:gravity="center"
@@ -84,8 +85,8 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp1"
-        android:background="@color/darkgray"/>
+        android:layout_height="0.5dp"
+        android:background="@color/gainsboro"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -102,7 +103,7 @@
         android:layout_marginRight="@dimen/dp12"
         android:textColor="@color/black"
         android:textSize="@dimen/sp12"
-        android:text="*请勿向上述地址充值任何非USDT资产(支持NRC-20协议币)，否则资产将不可找回。"/>
+        android:text="*请向上述地址充值USDT资产。"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -110,7 +111,7 @@
         android:layout_marginRight="@dimen/dp12"
         android:textColor="@color/black"
         android:textSize="@dimen/sp12"
-        android:text="*您充值至上述地址后，需要整个网络节点的确认，21次网络确认后到转账，待网络确人后可提币。"/>
+        android:text="*您充值至上述地址后，需要整个网络节点的确认，21次网络确认后到转账，待网络确认后可提币。"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -173,6 +173,8 @@
         <!--android:background="@color/dodgerblue"-->
         <com.superluo.textbannerlibrary.TextBannerView
             android:id="@+id/tv_banner"
+            app:setInterval="3000"
+            app:setAnimDuration="3000"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp30"
             app:setDirection="left_to_right"

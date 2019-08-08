@@ -148,8 +148,8 @@ public class PoketFragment extends BaseFragment {
     private void setView(final ResponseBean<MeberDetail> responseBean) {
         List<String> wordbanner = new ArrayList<>();
         wordbanner.add(responseBean.getData().getMessageInfo());
+        wordbanner.add(responseBean.getData().getMessageInfo());
         textBannerView.setDatas(wordbanner);
-
         tvMyMoney.setText(String.valueOf(responseBean.getData().getMember().getUsdtfee()));
         tvMyOwnMid.setText(String.valueOf(responseBean.getData().getMember().getNoUSDT()));
         tvPass.setText(responseBean.getData().getMember().getShoubiAddress());

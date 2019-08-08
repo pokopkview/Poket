@@ -43,6 +43,10 @@ public class DealRecodeActivity extends BaseActivity {
     TextView tvGet;
     @BindView(R.id.tv_change)
     TextView tvChange;
+    @BindView(R.id.iv_none)
+    ImageView ivNone;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
 
     @Override
     public String title_text() {
@@ -76,24 +80,33 @@ public class DealRecodeActivity extends BaseActivity {
                         Type type = new TypeToken<ResponseBean<List<DealRecode>>>() {
                         }.getType();
                         ResponseBean<List<DealRecode>> responseBean = new Gson().fromJson(response, type);
-                        System.out.println(responseBean.getData().size());
-                        DealRecodeAdapter dealRecodeAdapter = new DealRecodeAdapter(responseBean.getData(), mContext);
-                        rlRecode.setAdapter(dealRecodeAdapter);
-                        rlRecode.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
-                        rlRecode.setLayoutManager(new LinearLayoutManager(mContext));
+                        if (responseBean.getData().size() < 1) {
+                            ivNone.setVisibility(View.VISIBLE);
+                            rlRecode.setVisibility(View.GONE);
+                            llBottom.setVisibility(View.GONE);
+                        } else {
+                            ivNone.setVisibility(View.GONE);
+                            rlRecode.setVisibility(View.VISIBLE);
+                            llBottom.setVisibility(View.VISIBLE);
+                            System.out.println(responseBean.getData().size());
+                            DealRecodeAdapter dealRecodeAdapter = new DealRecodeAdapter(responseBean.getData(), mContext);
+                            rlRecode.setAdapter(dealRecodeAdapter);
+                            rlRecode.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
+                            rlRecode.setLayoutManager(new LinearLayoutManager(mContext));
+                        }
 
                     }
                 });
         tvChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mContext,ChargeActivity.class));
+                startActivity(new Intent(mContext, ChargeActivity.class));
             }
         });
         tvGet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mContext,ReceivActivity.class));
+                startActivity(new Intent(mContext, ReceivActivity.class));
             }
         });
     }

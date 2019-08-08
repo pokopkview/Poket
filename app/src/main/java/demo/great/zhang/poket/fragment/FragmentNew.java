@@ -1,25 +1,31 @@
 package demo.great.zhang.poket.fragment;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
-
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
-
-import java.time.Instant;
+import android.widget.RelativeLayout;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import demo.great.zhang.poket.NewActivity;
 import demo.great.zhang.poket.R;
-import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.base.BaseFragment;
-import demo.great.zhang.poket.net.URLConst;
-import okhttp3.Call;
 
 public class FragmentNew extends BaseFragment {
+    @BindView(R.id.rl_header)
+    RelativeLayout rlHeader;
+    @BindView(R.id.ll_community)
+    LinearLayout llCommunity;
+    @BindView(R.id.ll_manage_money)
+    LinearLayout llManageMoney;
+    @BindView(R.id.ll_new)
+    LinearLayout llNew;
     private LinearLayout ll_new;
+
     @Override
     protected Object getContentLayout() {
         return R.layout.setting_fragment_layout;
@@ -28,12 +34,24 @@ public class FragmentNew extends BaseFragment {
     @Override
     protected void initView(View contentView) {
         super.initView(contentView);
-        ll_new =(LinearLayout)contentView.findViewById(R.id.ll_new);
+        ll_new = (LinearLayout) contentView.findViewById(R.id.ll_new);
         ll_new.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent  intent = new Intent(getActivity(), NewActivity.class);
+                Intent intent = new Intent(getActivity(), NewActivity.class);
                 startActivity(intent);
+            }
+        });
+        llCommunity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getAppActivity().showMsg("正在开发中，敬请关注！");
+            }
+        });
+        llManageMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getAppActivity().showMsg("正在开发中，敬请关注！");
             }
         });
     }
@@ -43,4 +61,5 @@ public class FragmentNew extends BaseFragment {
 
 
     }
+
 }

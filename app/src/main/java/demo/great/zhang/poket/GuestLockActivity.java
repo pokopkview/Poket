@@ -1,7 +1,9 @@
 package demo.great.zhang.poket;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,12 +40,13 @@ public class GuestLockActivity extends BaseActivity {
         return R.layout.guest_locak_layout;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void initEvent() {
         lDisplayView.setPainter(new System360Painter());
-//        Glide.with(mActivity).load(SharePrefrenceUtils.getParam(mActivity,"headicon",null))
-//                .apply(RequestOptions.bitmapTransform(new CircleCrop()))
-//                .into(ivHeadIcon);
+        Glide.with(mActivity).load(getDrawable(R.drawable.touxiang01))
+                .apply(RequestOptions.bitmapTransform(new CircleCrop()))
+                .into(ivHeadIcon);
         lDisplayView.setGestureLockListener(new OnGestureLockListener() {
             @Override
             public void onStarted() {

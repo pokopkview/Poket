@@ -49,6 +49,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/ll_community"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="@dimen/dp60"
@@ -92,6 +93,7 @@
             android:background="@color/gainsboro"/>
 
         <LinearLayout
+            android:id="@+id/ll_manage_money"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="@dimen/dp60"

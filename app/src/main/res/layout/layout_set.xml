@@ -16,6 +16,7 @@
             android:layout_height="0.5dp"
             android:background="@color/gainsboro"/>
         <LinearLayout
+            android:id="@+id/ll_clean"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -32,6 +33,7 @@
                 android:text="清除本地缓存"/>
 
             <TextView
+                android:id="@+id/tv_cache"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="@dimen/dp48"
@@ -39,8 +41,7 @@
                 android:gravity="center|right"
                 android:textSize="@dimen/sp14"
                 android:paddingRight="@dimen/dp12"
-                android:paddingLeft="@dimen/dp12"
-                android:text="1.20MB"/>
+                android:paddingLeft="@dimen/dp12"/>
         </LinearLayout>
 
         <View
@@ -86,6 +87,7 @@
             android:layout_marginTop="@dimen/dp48"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/tv_quit"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp48"
                 android:layout_gravity="center"

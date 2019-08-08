@@ -26,8 +26,6 @@ import demo.great.zhang.poket.adapter.WordsAdapter;
 import demo.great.zhang.poket.base.BaseActivity;
 
 public class KeywordActivity extends BaseActivity {
-    @BindView(R.id.rl_header)
-    RelativeLayout rlHeader;
     @BindView(R.id.rl_select_words)
     TagFlowLayout rlSelectWords;
     @BindView(R.id.bt_frush)

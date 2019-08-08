@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_top_pic"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/invit_pic"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="@dimen/dp48"
+        android:layout_height="54dp"
+        android:clickable="true"
+        android:padding="15dp"
+        android:onClick="onLayoutClick"
+        android:src="@drawable/fanhui01" />
+
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp22"
+        android:layout_marginTop="@dimen/dp30"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/iv_top_pic"
+        android:text="安全-高效"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_marginTop="@dimen/dp80"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/iv_top_pic"
+        android:id="@+id/iv_code_qc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

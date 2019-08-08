@@ -46,7 +46,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -70,16 +69,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="质押"
+                    android:text="社区"
                     android:textSize="@dimen/sp16"/>
 
+                <!--android:textColor="@color/orange"-->
+                <!--android:background="@drawable/pledge_bg"-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/orange"
                     android:padding="@dimen/dp3"
-                    android:text="质押 NAS 分 NAT"
-                    android:background="@drawable/pledge_bg"
+                    android:text="币圈新闻早知道"
                     android:textSize="@dimen/sp12"/>
             </LinearLayout>
 
@@ -113,7 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="投票"
+                    android:text="理财"
                     android:textSize="@dimen/sp16"/>
 
                 <TextView
@@ -121,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black_transparent"
                     android:padding="@dimen/dp3"
-                    android:text="参与还能得NAT"
+                    android:text="参与收入更多NMST"
                     android:textSize="@dimen/sp12"/>
             </LinearLayout>
 

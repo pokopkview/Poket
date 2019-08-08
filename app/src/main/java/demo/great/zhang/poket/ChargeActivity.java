@@ -4,13 +4,19 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+
+import java.lang.reflect.Type;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import demo.great.zhang.poket.base.BaseActivity;
+import demo.great.zhang.poket.entity.LoginBean;
+import demo.great.zhang.poket.entity.ResponseBean;
 import demo.great.zhang.poket.net.URLConst;
 import okhttp3.Call;
 
@@ -48,25 +54,28 @@ public class ChargeActivity extends BaseActivity {
 
     @OnClick(R.id.tv_confirm_t)
     public void onViewClicked() {
-//        OkHttpUtils.post()
-//                .url(URLConst.GETSHAREMONEY())
-//                .addParams("memberId",getIntent().getStringExtra("meberid"))
-//                .addParams("walletName",tvWaletAddress.getText().toString())
-//                .addParams("zcnum",tvCount.getText().toString())
-//                .build()
-//                .execute(new StringCallback() {
-//                    @Override
-//                    public void onError(Call call, Exception e, int id) {
-//                        System.out.println(e.getMessage());
-////                        showMsg("未知错误");
-////                        dismissProgress();
-//                    }
-//
-//                    @Override
-//                    public void onResponse(String response, int id) {
-//                        System.out.println(response);
-//                        getCallBack(response, 1);
-//                    }
-//                });
+        showProgress();
+        OkHttpUtils.post()
+                .url(URLConst.GETSHAREMONEY())
+                .addParams("memberId",getIntent().getStringExtra("meberid"))
+                .addParams("walletName",tvWaletAddress.getText().toString())
+                .addParams("zcnum",tvCount.getText().toString())
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        System.out.println(e.getMessage());
+                        showMsg("未知错误");
+                        dismissProgress();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        dismissProgress();
+                        Type type = new TypeToken<ResponseBean<String>>(){}.getType();
+                        ResponseBean<String> responseBean = new Gson().fromJson(response,type);
+                        showMsg(responseBean.getText());
+                    }
+                });
     }
 }

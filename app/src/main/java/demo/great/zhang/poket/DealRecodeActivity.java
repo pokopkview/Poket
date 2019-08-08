@@ -1,10 +1,14 @@
 package demo.great.zhang.poket;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -20,7 +24,6 @@ import demo.great.zhang.poket.adapter.DealRecodeAdapter;
 import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.base.BaseActivity;
 import demo.great.zhang.poket.entity.DealRecode;
-import demo.great.zhang.poket.entity.LoginBean;
 import demo.great.zhang.poket.entity.ResponseBean;
 import demo.great.zhang.poket.net.URLConst;
 import okhttp3.Call;
@@ -28,6 +31,18 @@ import okhttp3.Call;
 public class DealRecodeActivity extends BaseActivity {
     @BindView(R.id.rl_recode)
     RecyclerView rlRecode;
+    @BindView(R.id.back)
+    ImageView back;
+    @BindView(R.id.title)
+    TextView title;
+    @BindView(R.id.submit)
+    TextView submit;
+    @BindView(R.id.title_top)
+    LinearLayout titleTop;
+    @BindView(R.id.tv_get)
+    TextView tvGet;
+    @BindView(R.id.tv_change)
+    TextView tvChange;
 
     @Override
     public String title_text() {
@@ -58,16 +73,29 @@ public class DealRecodeActivity extends BaseActivity {
                     public void onResponse(String response, int id) {
                         System.out.println(response);
                         dismissProgress();
-                        Type type = new TypeToken<ResponseBean<List<DealRecode>>>(){}.getType();
-                        ResponseBean<List<DealRecode>> responseBean = new Gson().fromJson(response,type);
+                        Type type = new TypeToken<ResponseBean<List<DealRecode>>>() {
+                        }.getType();
+                        ResponseBean<List<DealRecode>> responseBean = new Gson().fromJson(response, type);
                         System.out.println(responseBean.getData().size());
-                        DealRecodeAdapter dealRecodeAdapter = new DealRecodeAdapter(responseBean.getData(),mContext);
+                        DealRecodeAdapter dealRecodeAdapter = new DealRecodeAdapter(responseBean.getData(), mContext);
                         rlRecode.setAdapter(dealRecodeAdapter);
-                        rlRecode.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL));
+                        rlRecode.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
                         rlRecode.setLayoutManager(new LinearLayoutManager(mContext));
 
                     }
                 });
-
+        tvChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext,ChargeActivity.class));
+            }
+        });
+        tvGet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext,ReceivActivity.class));
+            }
+        });
     }
+
 }

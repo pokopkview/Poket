@@ -19,6 +19,7 @@ import demo.great.zhang.poket.DealRecodeActivity;
 import demo.great.zhang.poket.InviterActivity;
 import demo.great.zhang.poket.R;
 import demo.great.zhang.poket.SettingActivity;
+import demo.great.zhang.poket.WaletDetailActivity;
 import demo.great.zhang.poket.application.PoketApplication;
 import demo.great.zhang.poket.base.BaseFragment;
 import demo.great.zhang.poket.utils.StringUtil;
@@ -78,6 +79,7 @@ public class FragmentPersonal extends BaseFragment {
             case R.id.ll_money_center:
                 break;
             case R.id.ll_mywalet:
+                startActivity(new Intent(getAppActivity(), WaletDetailActivity.class));
                 break;
             case R.id.ll_recod:
                 startActivity(new Intent(getAppActivity(), DealRecodeActivity.class));

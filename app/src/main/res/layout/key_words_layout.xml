@@ -10,8 +10,9 @@
     <com.zhy.view.flowlayout.TagFlowLayout
         android:id="@+id/rl_select_words"
         app:max_select="-1"
-        android:background="@color/lightgray"
+        android:background="@drawable/simple_shape03"
         android:layout_width="match_parent"
+        android:layout_margin="@dimen/dp12"
         android:layout_height="@dimen/dp120"/>
     <Button
         android:textColor="@color/white"
@@ -20,6 +21,8 @@
         android:id="@+id/bt_frush"
         android:background="@color/nagative_blue"
         android:text="更新"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <com.zhy.view.flowlayout.TagFlowLayout
@@ -36,6 +39,8 @@
         android:id="@+id/bt_confirm"
         android:background="@color/nagative_blue"
         android:text="提交"
+        android:layout_marginRight="@dimen/dp12"
+        android:layout_marginLeft="@dimen/dp12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

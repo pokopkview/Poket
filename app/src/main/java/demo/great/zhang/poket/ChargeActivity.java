@@ -54,6 +54,18 @@ public class ChargeActivity extends BaseActivity {
 
     @OnClick(R.id.tv_confirm_t)
     public void onViewClicked() {
+        if (tvWaletAddress.getText().toString().trim() == null || "".equals(tvWaletAddress.getText().toString().trim())){
+            toast.setText("请填写钱包地址！");
+            toast.show();
+            return;
+        }
+        if (tvCount.getText().toString().trim() == null || "".equals(tvCount.getText().toString().trim())){
+            toast.setText("请输入钱币数量！");
+            toast.show();
+            return;
+        }
+
+
         showProgress();
         OkHttpUtils.post()
                 .url(URLConst.GETSHAREMONEY())

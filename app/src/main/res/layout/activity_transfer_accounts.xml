@@ -86,7 +86,7 @@
         android:id="@+id/tv_m_type_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="USDT"
+        android:text="NMST"
         android:textSize="@dimen/sp18"
         android:textColor="@color/black"
         android:layout_marginLeft="@dimen/dp12"

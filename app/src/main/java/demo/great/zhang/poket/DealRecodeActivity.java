@@ -82,8 +82,8 @@ public class DealRecodeActivity extends BaseActivity {
                         ResponseBean<List<DealRecode>> responseBean = new Gson().fromJson(response, type);
                         if (responseBean.getData().size() < 1) {
                             ivNone.setVisibility(View.VISIBLE);
-                            rlRecode.setVisibility(View.GONE);
-                            llBottom.setVisibility(View.GONE);
+//                            rlRecode.setVisibility(View.GONE);
+//                            llBottom.setVisibility(View.GONE);
                         } else {
                             ivNone.setVisibility(View.GONE);
                             rlRecode.setVisibility(View.VISIBLE);

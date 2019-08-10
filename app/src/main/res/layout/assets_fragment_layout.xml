@@ -177,7 +177,7 @@
             app:setAnimDuration="3000"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp30"
-            app:setDirection="left_to_right"
+            app:setDirection="right_to_left"
             app:setGravity="center"
             app:setTextColor="@color/white"/>
 

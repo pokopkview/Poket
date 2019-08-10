@@ -17,6 +17,10 @@ import butterknife.Unbinder;
 import demo.great.zhang.poket.AboutUSActivity;
 import demo.great.zhang.poket.DealRecodeActivity;
 import demo.great.zhang.poket.InviterActivity;
+import demo.great.zhang.poket.MyPoketActivity;
+import demo.great.zhang.poket.NewComerActivity;
+import demo.great.zhang.poket.PersonDetailActivity;
+import demo.great.zhang.poket.PoketCenterActivity;
 import demo.great.zhang.poket.R;
 import demo.great.zhang.poket.SettingActivity;
 import demo.great.zhang.poket.application.PoketApplication;
@@ -74,15 +78,19 @@ public class FragmentPersonal extends BaseFragment {
             case R.id.tv_current_walet:
                 break;
             case R.id.iv_more:
+                startActivity(new Intent(getAppActivity(), PersonDetailActivity.class));
                 break;
             case R.id.ll_money_center:
+                startActivity(new Intent(getAppActivity(), PoketCenterActivity.class));
                 break;
             case R.id.ll_mywalet:
+                startActivity(new Intent(getAppActivity(), MyPoketActivity.class));
                 break;
             case R.id.ll_recod:
                 startActivity(new Intent(getAppActivity(), DealRecodeActivity.class));
                 break;
             case R.id.ll_newcomer:
+                startActivity(new Intent(getAppActivity(), NewComerActivity.class));
                 break;
             case R.id.ll_about_as:
                 startActivity(new Intent(getAppActivity(), AboutUSActivity.class));

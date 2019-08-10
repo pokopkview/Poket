@@ -54,28 +54,34 @@ public class ChargeActivity extends BaseActivity {
 
     @OnClick(R.id.tv_confirm_t)
     public void onViewClicked() {
-        showProgress();
-        OkHttpUtils.post()
-                .url(URLConst.GETSHAREMONEY())
-                .addParams("memberId",getIntent().getStringExtra("meberid"))
-                .addParams("walletName",tvWaletAddress.getText().toString())
-                .addParams("zcnum",tvCount.getText().toString())
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        System.out.println(e.getMessage());
-                        showMsg("未知错误");
-                        dismissProgress();
-                    }
+        if(!tvWaletAddress.getText().toString().isEmpty()&&!tvCount.getText().toString().isEmpty()) {
 
-                    @Override
-                    public void onResponse(String response, int id) {
-                        dismissProgress();
-                        Type type = new TypeToken<ResponseBean<String>>(){}.getType();
-                        ResponseBean<String> responseBean = new Gson().fromJson(response,type);
-                        showMsg(responseBean.getText());
-                    }
-                });
+            showProgress();
+            OkHttpUtils.post()
+                    .url(URLConst.GETSHAREMONEY())
+                    .addParams("memberId", getIntent().getStringExtra("meberid"))
+                    .addParams("walletName", tvWaletAddress.getText().toString())
+                    .addParams("zcnum", tvCount.getText().toString())
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            System.out.println(e.getMessage());
+                            showMsg("未知错误");
+                            dismissProgress();
+                        }
+
+                        @Override
+                        public void onResponse(String response, int id) {
+                            dismissProgress();
+                            Type type = new TypeToken<ResponseBean<String>>() {
+                            }.getType();
+                            ResponseBean<String> responseBean = new Gson().fromJson(response, type);
+                            showMsg(responseBean.getText());
+                        }
+                    });
+        }else{
+            showMsg("请填入数据！");
+        }
     }
 }

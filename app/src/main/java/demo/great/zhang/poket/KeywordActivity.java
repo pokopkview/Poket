@@ -1,6 +1,8 @@
 package demo.great.zhang.poket;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +10,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -29,7 +32,7 @@ public class KeywordActivity extends BaseActivity {
     @BindView(R.id.rl_select_words)
     TagFlowLayout rlSelectWords;
     @BindView(R.id.bt_frush)
-    Button btFrush;
+    LinearLayout btFrush;
     @BindView(R.id.rl_words)
     TagFlowLayout rlWords;
     @BindView(R.id.bt_confirm)
@@ -60,7 +63,7 @@ public class KeywordActivity extends BaseActivity {
         final TagAdapter tagAdapter = new TagAdapter<String>(selectwords) {
             @Override
             public View getView(FlowLayout parent, int position, String s) {
-                View view = LayoutInflater.from(mContext).inflate(R.layout.words_layout,parent,false);
+                View view = LayoutInflater.from(mContext).inflate(R.layout.words_layout_blue,parent,false);
                 TextView tvWord = view.findViewById(R.id.tv_words);
                 System.out.println("position:"+position);
                 tvWord.setText(selectwords.get(position));

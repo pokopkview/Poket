@@ -28,9 +28,9 @@ public class SplaseActivity extends BaseActivity {
     private CountDownTimer countDownTimer = new CountDownTimer(1000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {
-            String str = tvSkip.getText().toString();
-            str = (millisUntilFinished/1000+1) + str.substring(1);
-            tvSkip.setText(str);
+//            String str = tvSkip.getText().toString();
+//            str = (millisUntilFinished/1000+1) + str.substring(1);
+//            tvSkip.setText(str);
 
         }
 

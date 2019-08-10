@@ -9,6 +9,7 @@
 
 
     <TextView
+        android:visibility="gone"
         android:textColor="@color/white"
         android:textSize="@dimen/sp16"
         android:background="@color/gainsboro"

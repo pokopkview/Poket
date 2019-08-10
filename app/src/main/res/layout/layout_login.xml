@@ -48,11 +48,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp48"
             android:hint="输入您的手机号"
+            android:textColorHint="@color/white"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="@dimen/dp12"
             android:background="@drawable/simple_shape03"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/sp14"/>
 
         <ImageView
@@ -68,11 +69,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp48"
             android:hint="输入您的密码"
+            android:textColorHint="@color/white"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="@dimen/dp12"
             android:background="@drawable/simple_shape03"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/sp14"/>
 
     </LinearLayout>

@@ -7,28 +7,50 @@
 
     <include layout="@layout/include_title"/>
 
+
     <com.zhy.view.flowlayout.TagFlowLayout
         android:id="@+id/rl_select_words"
         app:max_select="-1"
-        android:background="@color/lightgray"
+        android:background="#EFEFF0"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp120"/>
-    <Button
-        android:textColor="@color/white"
-        android:textSize="@dimen/sp18"
-        android:layout_marginTop="@dimen/dp3"
+        android:layout_height="@dimen/dp140"/>
+
+
+    <LinearLayout
+        android:background="#EFEFF0"
+        android:layout_gravity="right"
+        android:gravity="center_vertical|right"
         android:id="@+id/bt_frush"
-        android:background="@color/nagative_blue"
-        android:text="更新"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:background="#E2EAFD"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/refrush"
+            android:layout_width="@dimen/dp32"
+            android:layout_height="@dimen/dp32" />
+        <TextView
+            android:paddingRight="@dimen/dp8"
+            android:textSize="@dimen/sp18"
+            android:text="刷新助记词"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+
     <com.zhy.view.flowlayout.TagFlowLayout
-        android:layout_marginTop="@dimen/dp3"
+        android:paddingTop="@dimen/dp8"
         android:id="@+id/rl_words"
         app:max_select="-1"
+        android:background="#E2EAFD"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp120"/>
-
+        android:layout_height="@dimen/dp140"/>
     <Button
         android:textColor="@color/white"
         android:textSize="@dimen/sp18"

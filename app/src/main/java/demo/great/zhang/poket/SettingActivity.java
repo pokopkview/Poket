@@ -32,6 +32,8 @@ public class SettingActivity extends BaseActivity {
     TextView tvCache;
     @BindView(R.id.tv_quit)
     TextView tvQuit;
+    @BindView(R.id.tv_version_name)
+    TextView tvVersion;
 
     @Override
     public String title_text() {
@@ -45,6 +47,7 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     protected void initEvent() {
+        tvVersion.setText(AboutUSActivity.getVersionName(this));
         tvQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +63,7 @@ public class SettingActivity extends BaseActivity {
             e.printStackTrace();
         }
         tvCache.setText(cache);
+
     }
 
 

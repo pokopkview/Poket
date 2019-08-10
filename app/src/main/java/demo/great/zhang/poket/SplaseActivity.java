@@ -25,7 +25,7 @@ public class SplaseActivity extends BaseActivity {
         return R.layout.layout_splase_activity;
     }
 
-    private CountDownTimer countDownTimer = new CountDownTimer(3000, 1000) {
+    private CountDownTimer countDownTimer = new CountDownTimer(1000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {
             String str = tvSkip.getText().toString();

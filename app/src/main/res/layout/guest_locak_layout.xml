@@ -10,7 +10,7 @@
         app:normal_color="@color/black"
         app:press_color="@color/nagative_blue"
         app:error_color="@color/red"
-        app:is_use_animation="true"
+        app:is_use_animation="false"
         app:animation_scale_mode="normal"
         android:layout_width="300dp"
         android:layout_height="300dp"/>

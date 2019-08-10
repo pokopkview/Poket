@@ -54,40 +54,34 @@ public class ChargeActivity extends BaseActivity {
 
     @OnClick(R.id.tv_confirm_t)
     public void onViewClicked() {
-        if (tvWaletAddress.getText().toString().trim() == null || "".equals(tvWaletAddress.getText().toString().trim())){
-            toast.setText("请填写钱包地址！");
-            toast.show();
-            return;
+        if(!tvWaletAddress.getText().toString().isEmpty()&&!tvCount.getText().toString().isEmpty()) {
+
+            showProgress();
+            OkHttpUtils.post()
+                    .url(URLConst.GETSHAREMONEY())
+                    .addParams("memberId", getIntent().getStringExtra("meberid"))
+                    .addParams("walletName", tvWaletAddress.getText().toString())
+                    .addParams("zcnum", tvCount.getText().toString())
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            System.out.println(e.getMessage());
+                            showMsg("未知错误");
+                            dismissProgress();
+                        }
+
+                        @Override
+                        public void onResponse(String response, int id) {
+                            dismissProgress();
+                            Type type = new TypeToken<ResponseBean<String>>() {
+                            }.getType();
+                            ResponseBean<String> responseBean = new Gson().fromJson(response, type);
+                            showMsg(responseBean.getText());
+                        }
+                    });
+        }else{
+            showMsg("请填入数据！");
         }
-        if (tvCount.getText().toString().trim() == null || "".equals(tvCount.getText().toString().trim())){
-            toast.setText("请输入钱币数量！");
-            toast.show();
-            return;
-        }
-
-
-        showProgress();
-        OkHttpUtils.post()
-                .url(URLConst.GETSHAREMONEY())
-                .addParams("memberId",getIntent().getStringExtra("meberid"))
-                .addParams("walletName",tvWaletAddress.getText().toString())
-                .addParams("zcnum",tvCount.getText().toString())
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        System.out.println(e.getMessage());
-                        showMsg("未知错误");
-                        dismissProgress();
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        dismissProgress();
-                        Type type = new TypeToken<ResponseBean<String>>(){}.getType();
-                        ResponseBean<String> responseBean = new Gson().fromJson(response,type);
-                        showMsg(responseBean.getText());
-                    }
-                });
     }
 }

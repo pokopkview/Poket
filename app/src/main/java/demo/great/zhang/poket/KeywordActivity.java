@@ -97,6 +97,7 @@ public class KeywordActivity extends BaseActivity {
                     showMsg("最多10个词汇！");
                     return false;
                 }
+
                 selectwords.add(tenwords.get(position));
                 tagAdapter.notifyDataChanged();
                 tenwords.remove(position);
@@ -127,6 +128,13 @@ public class KeywordActivity extends BaseActivity {
         btConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (selectwords.size() < 5) {
+                    showMsg("最少5个词汇！");
+                    confrim = false;
+                    return;
+                }
+
                 if (!confrim) {
                     SharePrefrenceUtils.setParam(mContext, selectwords.toString(), String.class);
                     confrim = true;

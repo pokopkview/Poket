@@ -4,6 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CommunityActivity">
     <include layout="@layout/include_title"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp12"
+        android:textColor="@color/black"
+        android:text="官网"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:text="http://ethereume.io"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp12"
+        android:textColor="@color/black"
+        android:text="下载页"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp12"
+        android:text="http://yd.ethereume.io/download"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp12"
+        android:textColor="@color/black"
+        android:text="其它咨询"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp12"
+        android:text="newworld@ethereume.io"/>
+
 </LinearLayout>

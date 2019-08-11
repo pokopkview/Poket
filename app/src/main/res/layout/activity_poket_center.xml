@@ -4,6 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".PoketCenterActivity">
     <include layout="@layout/include_title"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="总资产"
+        android:textSize="@dimen/sp18"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp12"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.000"
+        android:textSize="@dimen/sp22"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp12"
+        android:gravity="center"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="估值"
+        android:textSize="@dimen/sp14"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp12"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.000"
+        android:textSize="@dimen/sp12"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dp12"
+        android:gravity="center"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rl_md_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

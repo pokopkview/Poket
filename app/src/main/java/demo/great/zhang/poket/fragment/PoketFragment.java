@@ -41,6 +41,7 @@ import butterknife.Unbinder;
 import demo.great.zhang.poket.ChargeActivity;
 import demo.great.zhang.poket.DePositMoneyActivity;
 import demo.great.zhang.poket.KeywordActivity;
+import demo.great.zhang.poket.PoketCenterActivity;
 import demo.great.zhang.poket.PropertyPassActivity;
 import demo.great.zhang.poket.R;
 import demo.great.zhang.poket.ReceivActivity;
@@ -184,6 +185,11 @@ public class PoketFragment extends BaseFragment {
         textBannerView.setDatas(wordbanner);
         tvMyMoney.setText(String.valueOf(responseBean.getData().getMember().getUsdtfee()));
         tvMyOwnMid.setText(String.valueOf(responseBean.getData().getMember().getNoUSDT()));
+
+        SharePrefrenceUtils.tvMyMoney = responseBean.getData().getMember().getUsdtfee();
+        SharePrefrenceUtils.tvMyOwnMid = responseBean.getData().getMember().getUsdtfee();
+
+
         tvPass.setText(responseBean.getData().getMember().getShoubiAddress());
         tvMyOwn.setText(String.format(tvMyOwn.getText().toString(), responseBean.getData().getMember().getWalletName()));
         List<Object> urlList = new ArrayList<>();
@@ -197,7 +203,11 @@ public class PoketFragment extends BaseFragment {
         dbAdapter.setClickListenner(new DBAdapter.itemClick() {
             @Override
             public void itemclick(int position) {
-                startActivity(new Intent(getAppActivity(), PropertyPassActivity.class));
+                Intent intent = new Intent(getAppActivity(), PropertyPassActivity.class);
+                intent.putExtra("Biname",responseBean.getData().getDb().get(position).getBiname());
+
+                startActivity(intent);
+//                startActivity(new Intent(getAppActivity(), PropertyPassActivity.class));
             }
         });
         rlMdList.setLayoutManager(new LinearLayoutManager(getAppActivity()));

@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import demo.great.zhang.poket.base.BaseActivity;
+import demo.great.zhang.poket.utils.SharePrefrenceUtils;
 
 public class PropertyPassActivity extends BaseActivity {
 
@@ -13,6 +14,9 @@ public class PropertyPassActivity extends BaseActivity {
     TextView tvGet;
     @BindView(R.id.tv_send)
     TextView tvSend;
+
+    @BindView(R.id.tv_top)
+    TextView tvTop;
 
     @Override
     public String title_text() {
@@ -26,6 +30,9 @@ public class PropertyPassActivity extends BaseActivity {
 
     @Override
     protected void initEvent() {
+        tvTop.setText(getIntent().getStringExtra("Biname"));
+
+
         tvGet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

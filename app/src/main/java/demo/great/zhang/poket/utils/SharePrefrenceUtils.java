@@ -95,4 +95,7 @@ public class SharePrefrenceUtils {
         editor.remove("定义的键名");
         editor.commit();
     }
+
+    public static double tvMyMoney ;
+    public static double tvMyOwnMid ;
 }

@@ -62,8 +62,6 @@
             android:gravity="center"
             android:textSize="@dimen/sp18"
             android:textColor="@color/gray_8f"/>
-
-
     </LinearLayout>
 
 

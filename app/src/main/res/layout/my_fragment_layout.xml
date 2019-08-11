@@ -367,8 +367,40 @@
                 android:background="@drawable/jiantou01"/>
 
         </LinearLayout>
-
-
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_margin="@dimen/dp12"
+                android:src="@drawable/tips"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center|left"
+                android:textSize="@dimen/sp16"
+                android:textColor="@color/black"
+                android:text="公告"/>
+
+            <ImageView
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/dp12"
+                android:background="@drawable/jiantou01"/>
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,6 +41,7 @@ import butterknife.Unbinder;
 import demo.great.zhang.poket.ChargeActivity;
 import demo.great.zhang.poket.DePositMoneyActivity;
 import demo.great.zhang.poket.KeywordActivity;
+import demo.great.zhang.poket.PropertyPassActivity;
 import demo.great.zhang.poket.R;
 import demo.great.zhang.poket.ReceivActivity;
 import demo.great.zhang.poket.WaletDetailActivity;
@@ -86,6 +88,8 @@ public class PoketFragment extends BaseFragment {
     RecyclerView rlMdList;
     @BindView(R.id.tv_banner)
     TextBannerView textBannerView;
+    @BindView(R.id.main_srfl)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     private String mID;
 
@@ -139,10 +143,38 @@ public class PoketFragment extends BaseFragment {
                         Type type = new TypeToken<ResponseBean<MeberDetail>>() {}.getType();
                         ResponseBean<MeberDetail> responseBean = new Gson().fromJson(response, type);
                         PoketApplication.currentBean = responseBean.getData().getMember();
+                        PoketApplication.INFO = responseBean.getData().getMessageInfo();
                         getAppActivity().dismissProgress();
                         setView(responseBean);
                     }
                 });
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                OkHttpUtils.post()
+                        .url(URLConst.GETMYMONEY())
+                        .addParams("memberId", mID)
+                        .build()
+                        .execute(new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
+                                System.out.println(e.getMessage());
+                            }
+
+                            @Override
+                            public void onResponse(String response, int id) {
+                                System.out.println(response);
+                                Type type = new TypeToken<ResponseBean<MeberDetail>>() {}.getType();
+                                ResponseBean<MeberDetail> responseBean = new Gson().fromJson(response, type);
+                                PoketApplication.currentBean = responseBean.getData().getMember();
+                                PoketApplication.INFO = responseBean.getData().getMessageInfo();
+                                getAppActivity().dismissProgress();
+                                setView(responseBean);
+                                swipeRefreshLayout.setRefreshing(false);
+                            }
+                        });
+            }
+        });
     }
 
     private void setView(final ResponseBean<MeberDetail> responseBean) {
@@ -165,7 +197,7 @@ public class PoketFragment extends BaseFragment {
         dbAdapter.setClickListenner(new DBAdapter.itemClick() {
             @Override
             public void itemclick(int position) {
-
+                startActivity(new Intent(getAppActivity(), PropertyPassActivity.class));
             }
         });
         rlMdList.setLayoutManager(new LinearLayoutManager(getAppActivity()));
@@ -175,7 +207,7 @@ public class PoketFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getAppActivity(), KeywordActivity.class));
+//                startActivity(new Intent(getAppActivity(), KeywordActivity.class));
                 String address = tvPass.getText().toString();
                 if(copy(address)){
                     getAppActivity().showMsg("已复制到粘贴板");

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NewWorld</string>
+    <array name="select_type">
+        <item>USDT</item>
+        <item>NMST</item>
+    </array>
 </resources>

@@ -41,4 +41,5 @@
     <dimen name="sp22">22sp</dimen>
     <dimen name="sp24">24sp</dimen>
     <dimen name="sp28">28sp</dimen>
+    <dimen name="sp34">34sp</dimen>
 </resources>

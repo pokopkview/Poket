@@ -75,6 +75,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void onLayoutClick(View v){
+
         if (ClickUtils.isContinuClick())return;
         switch (v.getId()){
             case R.id.back:
@@ -293,4 +294,28 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void exit(){
         PoketApplication.getInstance().exit();
     }
+
+    public void showNormalDialog(String title,String message){
+        /* @setIcon 设置对话框图标
+         * @setTitle 设置对话框标题
+         * @setMessage 设置对话框消息提示
+         * setXXX方法返回Dialog对象，因此可以链式设置属性
+         */
+        final AlertDialog.Builder normalDialog =
+                new AlertDialog.Builder(this);
+//        normalDialog.setIcon(R.mipmap.app_new_icon);
+        normalDialog.setTitle(title);
+        normalDialog.setCancelable(false);
+        normalDialog.setMessage(message);
+        normalDialog.setPositiveButton("确认",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        // 显示
+        normalDialog.show();
+    }
+
 }

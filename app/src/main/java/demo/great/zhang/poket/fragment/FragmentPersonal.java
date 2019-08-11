@@ -17,6 +17,7 @@ import butterknife.Unbinder;
 import demo.great.zhang.poket.AboutUSActivity;
 import demo.great.zhang.poket.DealRecodeActivity;
 import demo.great.zhang.poket.InviterActivity;
+import demo.great.zhang.poket.PoketCenterActivity;
 import demo.great.zhang.poket.R;
 import demo.great.zhang.poket.SettingActivity;
 import demo.great.zhang.poket.WaletDetailActivity;
@@ -48,6 +49,8 @@ public class FragmentPersonal extends BaseFragment {
     ImageView ivSetting;
     @BindView(R.id.ll_inviter)
     LinearLayout llInviter;
+    @BindView(R.id.ll_tips)
+    LinearLayout llTips;
 
     @Override
     protected Object getContentLayout() {
@@ -64,7 +67,7 @@ public class FragmentPersonal extends BaseFragment {
 
     }
 
-    @OnClick({R.id.iv_head_icon, R.id.tv_walet_name, R.id.tv_current_walet, R.id.iv_more, R.id.ll_money_center, R.id.ll_mywalet, R.id.ll_recod, R.id.ll_newcomer, R.id.ll_about_as,R.id.iv_setting,R.id.ll_inviter})
+    @OnClick({R.id.iv_head_icon, R.id.tv_walet_name, R.id.tv_current_walet, R.id.iv_more, R.id.ll_money_center, R.id.ll_mywalet, R.id.ll_recod, R.id.ll_newcomer, R.id.ll_about_as,R.id.iv_setting,R.id.ll_inviter,R.id.ll_tips})
     public void onViewClicked(View view) {
 
         switch (view.getId()) {
@@ -77,6 +80,7 @@ public class FragmentPersonal extends BaseFragment {
             case R.id.iv_more:
                 break;
             case R.id.ll_money_center:
+                startActivity(new Intent(getAppActivity(), PoketCenterActivity.class));
                 break;
             case R.id.ll_mywalet:
                 startActivity(new Intent(getAppActivity(), WaletDetailActivity.class));
@@ -94,6 +98,9 @@ public class FragmentPersonal extends BaseFragment {
                 break;
             case R.id.ll_inviter:
                 startActivity(new Intent(getAppActivity(), InviterActivity.class));
+                break;
+            case R.id.ll_tips:
+                getAppActivity().showNormalDialog("公告",PoketApplication.INFO);
                 break;
         }
     }

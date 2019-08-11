@@ -19,6 +19,7 @@ public class PoketApplication extends Application {
 
     public static String MEMBERID;
     public static MeberDetail.MemberBean currentBean;
+    public static String INFO;
 
     private static PoketApplication instance = null;
 

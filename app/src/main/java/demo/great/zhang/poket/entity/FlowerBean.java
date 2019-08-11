@@ -9,9 +9,36 @@ public class FlowerBean {
      */
 
     private int countm;
+    private int yeUsdt;
+    private int nmustYe;
+    private int yduihUSDT;
     private RedDataBean redData;
     private double syall;
     private String shoubiAddress;
+
+    public int getYeUsdt() {
+        return yeUsdt;
+    }
+
+    public void setYeUsdt(int yeUsdt) {
+        this.yeUsdt = yeUsdt;
+    }
+
+    public int getNmustYe() {
+        return nmustYe;
+    }
+
+    public void setNmustYe(int nmustYe) {
+        this.nmustYe = nmustYe;
+    }
+
+    public int getYduihUSDT() {
+        return yduihUSDT;
+    }
+
+    public void setYduihUSDT(int yduihUSDT) {
+        this.yduihUSDT = yduihUSDT;
+    }
 
     public String getShoubiAddress() {
         return shoubiAddress;

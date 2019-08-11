@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-    <!--android:background="@color/dodgerblue"-->
     <RelativeLayout
         android:id="@+id/rl_header"
         android:layout_width="match_parent"
-
         android:layout_height="48dp">
         <!--android:background="@drawable/zichan02"-->
         <LinearLayout
@@ -20,7 +15,6 @@
             android:gravity="center"
             android:background="@drawable/zichan02"
             android:layout_height="48dp">
-
 
             <TextView
                 android:textSize="@dimen/sp20"
@@ -32,10 +26,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-
-
     </RelativeLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/main_srfl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <!--android:background="@color/dodgerblue"-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp320"
@@ -176,6 +179,7 @@
         </LinearLayout>
         <!--android:background="@color/dodgerblue"-->
         <com.superluo.textbannerlibrary.TextBannerView
+            android:visibility="invisible"
             android:id="@+id/tv_banner"
             app:setInterval="3000"
             app:setAnimDuration="3000"
@@ -299,4 +303,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     </LinearLayout>
-</ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

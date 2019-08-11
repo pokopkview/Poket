@@ -5,6 +5,132 @@
     android:layout_height="match_parent"
     android:background="@drawable/new_bj">
     <include layout="@layout/include_title"/>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:id="@+id/ll_flower_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_marginTop="@dimen/dp32"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:text="小红花"
+            android:textSize="@dimen/sp24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/dp8"
+            android:background="#66F7F7F7"
+            android:layout_marginLeft="@dimen/dp24"
+            android:layout_marginRight="@dimen/dp24"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp140">
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/dp24"
+                android:layout_marginRight="@dimen/dp24"
+                android:background="#76F7F7F7"
+                android:layout_marginTop="@dimen/dp24"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40">
+                
+                <TextView
+                    android:textSize="@dimen/sp16"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:text="持有数"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="@dimen/sp16"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:text="已解锁"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="@dimen/sp16"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:text="当前状态"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/dp24"
+                android:layout_marginRight="@dimen/dp24"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40">
+
+                <TextView
+                    android:id="@+id/tv_count"
+                    android:textSize="@dimen/sp16"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_clear_num"
+                    android:textSize="@dimen/sp16"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_lock_state"
+                    android:textSize="@dimen/sp16"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp30"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40">
+
+            <TextView
+                android:id="@+id/tv_close"
+                android:textSize="@dimen/sp18"
+                android:background="@drawable/simple_shape01"
+                android:layout_marginLeft="@dimen/dp48"
+                android:layout_marginRight="@dimen/dp48"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="关闭"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_main"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,105 +161,6 @@
         android:textColor="@color/white"
         android:textSize="@dimen/sp14"
         android:layout_marginTop="@dimen/dp12"/>
-    <LinearLayout
-        android:id="@+id/ll_tips"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp48"
-        android:orientation="horizontal"
-        android:layout_marginRight="@dimen/dp12"
-        android:layout_marginTop="@dimen/dp12"
-        android:layout_marginLeft="@dimen/dp12"
-        android:background="@color/silver"
-        android:layout_gravity="center"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="引领着(USDT)"
-            android:textSize="@dimen/sp12"
-            android:padding="@dimen/dp5"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/white"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="推广者(USDT)"
-            android:textSize="@dimen/sp12"
-            android:layout_marginLeft="@dimen/dp12"
-            android:padding="@dimen/dp5"
-            android:gravity="center"
-            android:textColor="@color/white"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="幸运锦鲤(USDT)"
-            android:layout_marginLeft="@dimen/dp12"
-            android:textSize="@dimen/sp12"
-            android:paddingLeft="@dimen/dp12"
-            android:paddingRight="@dimen/dp12"
-            android:padding="@dimen/dp5"
-            android:gravity="center"
-            android:textColor="@color/white"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_detail"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp48"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/dp12"
-        android:layout_marginRight="@dimen/dp12"
-        android:background="@color/gainsboro"
-        android:layout_gravity="center"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/tv_folow"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="251828.2545"
-            android:textSize="@dimen/sp12"
-            android:padding="@dimen/dp5"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/white"/>
-
-        <TextView
-            android:id="@+id/tv_broad"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="13215151351"
-            android:textSize="@dimen/sp12"
-            android:layout_marginLeft="@dimen/dp12"
-            android:padding="@dimen/dp5"
-            android:gravity="center"
-            android:textColor="@color/white"/>
-
-        <TextView
-            android:id="@+id/tv_lucy"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="35135156"
-            android:layout_marginLeft="@dimen/dp12"
-            android:textSize="@dimen/sp12"
-            android:paddingLeft="@dimen/dp12"
-            android:paddingRight="@dimen/dp12"
-            android:padding="@dimen/dp5"
-            android:gravity="center"
-            android:textColor="@color/white"/>
-
-    </LinearLayout>
 
     
     <LinearLayout
@@ -145,6 +172,7 @@
         android:gravity="center">
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/tv_check"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp30"
@@ -155,6 +183,8 @@
             android:textColor="@color/white"/>
 
         <TextView
+            android:gravity="center"
+            android:id="@+id/tv_show_qccode"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp30"
             android:text="查看我的邀请码"
@@ -165,6 +195,7 @@
             android:textColor="@color/white"/>
 
         <TextView
+            android:id="@+id/tv_clear"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp30"
             android:text="解锁"
@@ -216,14 +247,15 @@
             android:layout_weight="1"
             android:layout_height="@dimen/dp48"
             android:text="兑换NMST"
+            android:background="@color/red"
             android:gravity="center"
             android:textColor="@color/white"
             android:layout_marginRight="@dimen/dp12"
             android:layout_marginLeft="@dimen/dp30"
-            android:background="@drawable/simple_shape01"
             android:textSize="@dimen/sp16"/>
 
         <TextView
+            android:visibility="gone"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="@dimen/dp48"
@@ -255,4 +287,107 @@
         android:gravity="right"
         android:layout_marginRight="@dimen/dp30"
         android:text="您收益%s"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_tips"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp12"
+        android:layout_marginLeft="@dimen/dp12"
+        android:background="@color/skyblue"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="已兑换USDT"
+            android:textSize="@dimen/sp12"
+            android:padding="@dimen/dp5"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="NMST余额"
+            android:textSize="@dimen/sp12"
+            android:layout_marginLeft="@dimen/dp12"
+            android:padding="@dimen/dp5"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="USDT余额"
+            android:layout_marginLeft="@dimen/dp12"
+            android:textSize="@dimen/sp12"
+            android:paddingLeft="@dimen/dp12"
+            android:paddingRight="@dimen/dp12"
+            android:padding="@dimen/dp5"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_detail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@color/slateblue"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_folow"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="251828.2545"
+            android:textSize="@dimen/sp12"
+            android:padding="@dimen/dp5"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tv_broad"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="13215151351"
+            android:textSize="@dimen/sp12"
+            android:layout_marginLeft="@dimen/dp12"
+            android:padding="@dimen/dp5"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tv_lucy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="35135156"
+            android:layout_marginLeft="@dimen/dp12"
+            android:textSize="@dimen/sp12"
+            android:paddingLeft="@dimen/dp12"
+            android:paddingRight="@dimen/dp12"
+            android:padding="@dimen/dp5"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

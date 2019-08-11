@@ -1,7 +1,11 @@
 package demo.great.zhang.poket;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -35,6 +39,12 @@ public class ChargeActivity extends BaseActivity {
     TextView tvStealType;
     @BindView(R.id.tv_confirm_t)
     TextView tvConfirmT;
+    @BindView(R.id.tv_coast)
+    TextView tvCoast;
+    @BindView(R.id.tv_show_tips)
+    TextView tvShowtips;
+    @BindView(R.id.sp_select_type)
+    Spinner spinner;
 
     @Override
     public String title_text() {
@@ -48,7 +58,26 @@ public class ChargeActivity extends BaseActivity {
 
     @Override
     protected void initEvent() {
+        String value = spinner.getSelectedItem().toString();
+        tvMTypeOut.setText(value);
+        tvStealType.setText(value);
+        tvCoast.setText(value);
+        tvShowtips.setText(value);
+        spinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String value = spinner.getSelectedItem().toString();
+                tvMTypeOut.setText(value);
+                tvStealType.setText(value);
+                tvCoast.setText(value);
+                tvShowtips.setText(value);
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
 

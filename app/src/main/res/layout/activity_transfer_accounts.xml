@@ -23,6 +23,7 @@
         android:layout_marginTop="@dimen/dp12"/>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tv_m_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,6 +32,16 @@
         android:textColor="@color/black"
         android:layout_marginLeft="@dimen/dp12"
         android:layout_marginTop="@dimen/dp12"/>
+
+
+    <Spinner
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp12"
+        android:entries="@array/select_type"
+        android:id="@+id/sp_select_type"
+        style="@style/Widget.AppCompat.DropDownItem.Spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <View
         android:layout_width="match_parent"
@@ -85,12 +96,12 @@
     <TextView
         android:id="@+id/tv_m_type_out"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="USDT"
-        android:textSize="@dimen/sp18"
-        android:textColor="@color/black"
+        android:layout_height="22dp"
         android:layout_marginLeft="@dimen/dp12"
-        android:layout_marginTop="@dimen/dp12"/>
+        android:layout_marginTop="@dimen/dp12"
+        android:text="%s"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp18" />
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
@@ -122,11 +133,11 @@
             android:id="@+id/tv_steal_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="USDT"
-            android:textSize="@dimen/sp18"
-            android:textColor="@color/black"
             android:layout_marginLeft="@dimen/dp5"
-            android:layout_marginTop="@dimen/dp12"/>
+            android:layout_marginTop="@dimen/dp12"
+            android:text="%s"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp18" />
     </LinearLayout>
 
     <View
@@ -156,13 +167,15 @@
             android:textColor="@color/midnightblue"
             android:layout_marginLeft="@dimen/dp5"
             android:layout_marginTop="@dimen/dp12"/>
+
         <TextView
+            android:id="@+id/tv_coast"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="USDT"
-            android:textColor="@color/darkgray"
             android:layout_marginLeft="@dimen/dp5"
-            android:layout_marginTop="@dimen/dp12"/>
+            android:layout_marginTop="@dimen/dp12"
+            android:text="%s"
+            android:textColor="@color/darkgray" />
     </LinearLayout>
 
 
@@ -170,15 +183,27 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp48"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="请再次确认是否转出USDT"
+            android:text="请再次确认是否转出"
             android:textSize="@dimen/sp14"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/dp12" />
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp14"
+            android:id="@+id/tv_show_tips"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
         <TextView
             android:id="@+id/tv_confirm_t"
             android:layout_width="@dimen/dp80"

@@ -134,7 +134,7 @@
                     android:layout_marginLeft="@dimen/dp12"
                     android:text="bksdlakjlafjdsfaefa"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/sp14"/>
+                    android:textSize="@dimen/sp12"/>
 
             </LinearLayout>
 
@@ -151,6 +151,7 @@
                     android:layout_marginTop="@dimen/dp12"
                     android:layout_marginRight="@dimen/dp12"
                     android:src="@drawable/erweima"
+                    android:visibility="gone"
                     android:layout_gravity="center|right" />
 
 

@@ -52,7 +52,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="@dimen/dp12"
-            android:background="@drawable/simple_shape03"
+            android:background="@drawable/simple_shape01"
             android:textColor="@color/white"
             android:textSize="@dimen/sp14"/>
 
@@ -73,7 +73,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="@dimen/dp12"
-            android:background="@drawable/simple_shape03"
+            android:background="@drawable/simple_shape01"
             android:textColor="@color/white"
             android:textSize="@dimen/sp14"/>
 

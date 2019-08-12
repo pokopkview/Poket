@@ -10,6 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import demo.great.zhang.poket.base.BaseActivity;
+import demo.great.zhang.poket.utils.SharePrefrenceUtils;
 
 public class ReceivActivity extends BaseActivity {
     @BindView(R.id.tv_walet_ad)
@@ -29,7 +30,10 @@ public class ReceivActivity extends BaseActivity {
 
     @Override
     protected void initEvent() {
-        tvWaletAd.setText(getIntent().getStringExtra("waletaddress"));
+
+        tvWaletAd.setText(SharePrefrenceUtils.ShoubiAddress);
+//        tvWaletAd.setText(getIntent().getStringExtra("waletaddress"));
+
     }
 
     @OnClick(R.id.tv_click_copy)

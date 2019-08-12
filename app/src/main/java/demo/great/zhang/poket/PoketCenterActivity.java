@@ -53,8 +53,6 @@ public class PoketCenterActivity extends BaseActivity {
         tv01.setText(String.valueOf(SharePrefrenceUtils.tvMyMoney));
         tv02.setText(String.valueOf(SharePrefrenceUtils.tvMyOwnMid));
 
-
-
         OkHttpUtils.post()
                 .url(URLConst.GETMYMONEY())
                 .addParams("memberId", mID)
@@ -88,7 +86,6 @@ public class PoketCenterActivity extends BaseActivity {
                 Intent intent = new Intent(PoketCenterActivity.this, PropertyPassActivity.class);
                 intent.putExtra("Biname",responseBean.getData().getDb().get(position).getBiname());
                 startActivity(intent);
-
 
 //                startActivity(new Intent(PoketCenterActivity.this, PropertyPassActivity.class));
             }

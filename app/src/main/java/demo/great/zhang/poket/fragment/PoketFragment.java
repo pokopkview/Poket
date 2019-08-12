@@ -188,7 +188,7 @@ public class PoketFragment extends BaseFragment {
 
         SharePrefrenceUtils.tvMyMoney = responseBean.getData().getMember().getUsdtfee();
         SharePrefrenceUtils.tvMyOwnMid = responseBean.getData().getMember().getUsdtfee();
-
+        SharePrefrenceUtils.ShoubiAddress = responseBean.getData().getMember().getShoubiAddress();
 
         tvPass.setText(responseBean.getData().getMember().getShoubiAddress());
         tvMyOwn.setText(String.format(tvMyOwn.getText().toString(), responseBean.getData().getMember().getWalletName()));
@@ -205,7 +205,6 @@ public class PoketFragment extends BaseFragment {
             public void itemclick(int position) {
                 Intent intent = new Intent(getAppActivity(), PropertyPassActivity.class);
                 intent.putExtra("Biname",responseBean.getData().getDb().get(position).getBiname());
-
                 startActivity(intent);
 //                startActivity(new Intent(getAppActivity(), PropertyPassActivity.class));
             }

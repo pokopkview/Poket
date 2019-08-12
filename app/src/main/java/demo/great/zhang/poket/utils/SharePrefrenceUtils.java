@@ -98,4 +98,5 @@ public class SharePrefrenceUtils {
 
     public static double tvMyMoney ;
     public static double tvMyOwnMid ;
+    public static String ShoubiAddress ;
 }

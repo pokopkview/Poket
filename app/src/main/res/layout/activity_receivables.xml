@@ -68,6 +68,7 @@
             android:layout_gravity="center"
             android:gravity="center|left"
             android:textColor="@color/black"
+            android:textSize="@dimen/sp10"
             android:layout_marginLeft="@dimen/dp12"/>
 
         <TextView

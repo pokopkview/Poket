@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import demo.great.zhang.poket.R;
@@ -11,6 +12,7 @@ import demo.great.zhang.poket.R;
 public class CustomDialog extends Dialog {
     private EditText etCount,etCode;
     private TextView tvCancle,tvConfirm;
+    private Spinner spinner;
 
     private DialogItf lisenter;
 
@@ -35,7 +37,7 @@ public class CustomDialog extends Dialog {
         return etCount.getText().toString();
     }
     public String getCode(){
-        return etCode.getText().toString();
+        return spinner.getSelectedItem().toString();
     }
 
     public void setResID(int resid){
@@ -44,6 +46,7 @@ public class CustomDialog extends Dialog {
         etCode = this.findViewById(R.id.et_code);
         tvCancle = this.findViewById(R.id.tv_cancle);
         tvConfirm = this.findViewById(R.id.tv_confirm);
+        spinner = this.findViewById(R.id.sp_level);
         tvConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

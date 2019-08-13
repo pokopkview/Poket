@@ -145,7 +145,9 @@ public class PoketFragment extends BaseFragment {
                         ResponseBean<MeberDetail> responseBean = new Gson().fromJson(response, type);
                         PoketApplication.currentBean = responseBean.getData().getMember();
                         PoketApplication.INFO = responseBean.getData().getMessageInfo();
-                        getAppActivity().dismissProgress();
+                        if(getAppActivity()!=null) {
+                            getAppActivity().dismissProgress();
+                        }
                         setView(responseBean);
                     }
                 });
@@ -216,7 +218,7 @@ public class PoketFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
 
-//                startActivity(new Intent(getAppActivity(), KeywordActivity.class));
+                startActivity(new Intent(getAppActivity(), KeywordActivity.class));
                 String address = tvPass.getText().toString();
                 if(copy(address)){
                     getAppActivity().showMsg("已复制到粘贴板");

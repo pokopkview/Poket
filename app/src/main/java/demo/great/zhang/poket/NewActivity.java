@@ -27,6 +27,7 @@ import demo.great.zhang.poket.entity.ResponseBean;
 import demo.great.zhang.poket.net.URLConst;
 import demo.great.zhang.poket.utils.CustomDialog;
 import demo.great.zhang.poket.utils.QRCodeUtil;
+import demo.great.zhang.poket.utils.SharePrefrenceUtils;
 import okhttp3.Call;
 
 public class NewActivity extends BaseActivity {
@@ -75,6 +76,8 @@ public class NewActivity extends BaseActivity {
     @BindView(R.id.tv_close)
     TextView tvClose;
 
+
+    String sixword;
     @Override
     public String title_text() {
         return "兑换中心";
@@ -147,6 +150,13 @@ public class NewActivity extends BaseActivity {
 
 
         final Bitmap bitmap = QRCodeUtil.createQRCode("http://yd.ethereume.io/register?memberId=" + PoketApplication.MEMBERID);
+        System.out.println(SharePrefrenceUtils.getParam(mContext,"keywords",String.class)==null);
+        if(SharePrefrenceUtils.getParam(mContext,"keywords",String.class)==null||((String)SharePrefrenceUtils.getParam(mContext,"keywords",String.class)).isEmpty()) {
+            sixword = getCharAndNumr(6);
+            SharePrefrenceUtils.setParam(mContext, "keywords", sixword);
+        }else{
+            sixword = (String) SharePrefrenceUtils.getParam(mContext,"keywords",String.class);
+        }
         tvQCcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,7 +164,7 @@ public class NewActivity extends BaseActivity {
                 View view = LayoutInflater.from(mContext).inflate(R.layout.show_qc_layout, null, false);
                 ImageView imageView = view.findViewById(R.id.iv_show_code);
                 TextView textView = view.findViewById(R.id.tv_text);
-                textView.setText(getCharAndNumr(6));
+                textView.setText(sixword);
                 imageView.setImageBitmap(bitmap);
                 dialog.setContentView(view);
                 dialog.show();
@@ -163,8 +173,10 @@ public class NewActivity extends BaseActivity {
         tvClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                llFlowerLayout.setVisibility(View.VISIBLE);
-                llMain.setVisibility(View.GONE);
+                if(Integer.parseInt(tvCount.getText().toString())>0) {
+                    llFlowerLayout.setVisibility(View.VISIBLE);
+                    llMain.setVisibility(View.GONE);
+                }
             }
         });
         tvClose.setOnClickListener(new View.OnClickListener() {
@@ -185,8 +197,8 @@ public class NewActivity extends BaseActivity {
         nasAll.setText(String.valueOf(flowerBean.getNmustYe()));
         tvLucy.setText(String.valueOf(flowerBean.getYeUsdt()));
         tvWaketAd.setText(flowerBean.getShoubiAddress());
-        llDetail.setVisibility(View.GONE);
-        llTips.setVisibility(View.GONE);
+//        llDetail.setVisibility(View.GONE);
+//        llTips.setVisibility(View.GONE);
         tvCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,37 +225,71 @@ public class NewActivity extends BaseActivity {
                     @Override
                     public void confirm() {
                         showProgress();
-                        OkHttpUtils.post()
-                                .url(URLConst.GETNMS())
-                                .addParams("memberId", PoketApplication.MEMBERID)
-                                .addParams("usdtNum", dialog.getCount())
-                                .build()
-                                .execute(new StringCallback() {
-                                    @Override
-                                    public void onError(Call call, Exception e, int id) {
-                                        System.out.println(e.getMessage());
-                                        showMsg("未知错误");
-                                        dismissProgress();
-                                    }
 
-                                    @Override
-                                    public void onResponse(String response, int id) {
-                                        dismissProgress();
-                                        System.out.println(response);
-                                        if (response != null) {
-                                            Type type = new TypeToken<ResponseBean<String>>() {
-                                            }.getType();
-                                            ResponseBean<String> imgBack = new Gson().fromJson(response, type);
+                        if(dialog.getCode().length()>4) {
+                            OkHttpUtils.post()
+                                    .url(URLConst.GETNMS())
+                                    .addParams("memberId", PoketApplication.MEMBERID)
+                                    .addParams("usdtNum", dialog.getCount())
+                                    .build()
+                                    .execute(new StringCallback() {
+                                        @Override
+                                        public void onError(Call call, Exception e, int id) {
+                                            System.out.println(e.getMessage());
+                                            showMsg("未知错误");
+                                            dismissProgress();
+                                        }
+
+                                        @Override
+                                        public void onResponse(String response, int id) {
+                                            dismissProgress();
+                                            System.out.println(response);
+                                            if (response != null) {
+                                                Type type = new TypeToken<ResponseBean<String>>() {
+                                                }.getType();
+                                                ResponseBean<String> imgBack = new Gson().fromJson(response, type);
 //                                            if (imgBack.getCode().equals("0")) {
 //                                                showMsg(imgBack.getText());
 //                                            } else {
-                                            showMsg(imgBack.getText());
+                                                showMsg(imgBack.getText());
 //                                            }
+                                            }
+                                            dialog.dismiss();
                                         }
-                                        dialog.dismiss();
-                                    }
-                                });
+                                    });
+                        }else{
+                            OkHttpUtils.post()
+                                    .url(URLConst.GETNMS())
+                                    .addParams("memberId", PoketApplication.MEMBERID)
+                                    .addParams("usdtNum", dialog.getCount())
+                                    .addParams("ggVal", dialog.getCode().substring(0,1))
+                                    .build()
+                                    .execute(new StringCallback() {
+                                        @Override
+                                        public void onError(Call call, Exception e, int id) {
+                                            System.out.println(e.getMessage());
+                                            showMsg("未知错误");
+                                            dismissProgress();
+                                        }
 
+                                        @Override
+                                        public void onResponse(String response, int id) {
+                                            dismissProgress();
+                                            System.out.println(response);
+                                            if (response != null) {
+                                                Type type = new TypeToken<ResponseBean<String>>() {
+                                                }.getType();
+                                                ResponseBean<String> imgBack = new Gson().fromJson(response, type);
+//                                            if (imgBack.getCode().equals("0")) {
+//                                                showMsg(imgBack.getText());
+//                                            } else {
+                                                showMsg(imgBack.getText());
+//                                            }
+                                            }
+                                            dialog.dismiss();
+                                        }
+                                    });
+                        }
                     }
                 });
                 dialog.show();

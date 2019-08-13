@@ -11,9 +11,8 @@
         <!--android:background="@drawable/zichan02"-->
         <LinearLayout
             android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:gravity="center"
-            android:background="@drawable/zichan02"
             android:layout_height="48dp">
 
             <TextView
@@ -21,7 +20,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="2dp"
                 android:includeFontPadding="false"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:text="资产"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

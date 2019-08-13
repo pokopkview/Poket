@@ -6,8 +6,8 @@ android {
         applicationId "demo.great.zhang.poket"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 3
-        versionName "1.1.1"
+        versionCode 4
+        versionName "1.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -42,6 +42,5 @@ dependencies {
     implementation 'com.hyman:flowlayout-lib:1.1.2'
     implementation 'com.superluo:textbannerview:1.0.4'
     implementation 'com.google.zxing:core:3.3.0'
-
     implementation 'com.squareup.okhttp3:okhttp:3.2.0'
 }

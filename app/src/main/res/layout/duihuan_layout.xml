@@ -16,10 +16,12 @@
 
 
     <EditText
+        android:singleLine="true"
         android:id="@+id/et_count"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp48"
         android:hint="请输入USDT数量"
+        android:inputType="number"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_margin="@dimen/dp12"
@@ -28,6 +30,7 @@
         android:textSize="@dimen/sp18"
         android:textColor="@color/black"/>
     <EditText
+        android:visibility="gone"
         android:id="@+id/et_code"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp48"
@@ -39,6 +42,18 @@
         android:layout_marginTop="@dimen/dp30"
         android:textSize="@dimen/sp18"
         android:textColor="@color/black"/>
+
+
+    <Spinner
+        android:id="@+id/sp_level"
+        android:spinnerMode="dialog"
+        style="@style/Widget.AppCompat.DropDownItem.Spinner"
+        android:gravity="center"
+        android:entries="@array/select_level"
+        android:layout_margin="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp30"
+        android:layout_height="@dimen/dp48"
+        android:layout_width="match_parent"></Spinner>
 
 
     <LinearLayout

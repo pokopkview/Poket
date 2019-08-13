@@ -36,8 +36,8 @@ public class KeywordActivity extends BaseActivity {
     TagFlowLayout rlWords;
     @BindView(R.id.bt_confirm)
     Button btConfirm;
-    @BindView(R.id.ll_confrim_words)
-    LinearLayout confrimWords;
+    @BindView(R.id.tv_tips)
+    TextView tvTips;
 
     private boolean confrim = false;
 
@@ -88,16 +88,14 @@ public class KeywordActivity extends BaseActivity {
                 return view;
             }
         };
-
+        rlWords.setClickable(false);
         rlWords.setAdapter(tagAdapter2);
         rlWords.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
             @Override
             public boolean onTagClick(View view, int position, FlowLayout parent) {
-                if (selectwords.size() > 9) {
-                    showMsg("最多10个词汇！");
+                if(!confrim){
                     return false;
                 }
-
                 selectwords.add(tenwords.get(position));
                 tagAdapter.notifyDataChanged();
                 tenwords.remove(position);
@@ -129,31 +127,36 @@ public class KeywordActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                if (selectwords.size() < 5) {
-                    showMsg("最少5个词汇！");
-                    confrim = false;
-                    return;
-                }
+//                if (selectwords.size() < 5) {
+//                    showMsg("最少5个词汇！");
+//                    confrim = false;
+//                    return;
+//                }
 
                 if (!confrim) {
-                    SharePrefrenceUtils.setParam(mContext, selectwords.toString(), String.class);
+                    SharePrefrenceUtils.setParam(mContext, tenwords.toString(), String.class);
                     confrim = true;
-                    btFrush.setVisibility(View.GONE);
-                    confrimWords.setVisibility(View.VISIBLE);
-                    tenwords.clear();
-                    basewords = deepCopyList(selectwords);
-                    Collections.shuffle(selectwords);
-                    tenwords.addAll(selectwords);
+//                    tenwords.clear();
+                    basewords = deepCopyList(tenwords);
+                    Collections.shuffle(tenwords);
+                    tvTips.setText("请按顺序点击之前记下的助记词！");
+                    btConfirm.setText("完成验证");
+                    rlSelectWords.setVisibility(View.VISIBLE);
+//                    tenwords.addAll(selectwords);
                     tagAdapter2.notifyDataChanged();
                     selectwords.clear();
                     tagAdapter.notifyDataChanged();
                 } else {
                     if (compareList(basewords, selectwords)) {
                         startActivity(new Intent(mContext, SetGuestLockActivity.class));
+                        finish();
                     } else {
                         showMsg("顺序错误请重新输入");
                         tenwords.clear();
-                        tenwords.addAll(deepCopyList(basewords));
+                        List<String> temp = new ArrayList<>();
+                        temp = deepCopyList(basewords);
+                        Collections.shuffle(temp);
+                        tenwords.addAll(temp);
                         selectwords.clear();
                         tagAdapter.notifyDataChanged();
                         tagAdapter2.notifyDataChanged();

@@ -12,7 +12,7 @@
         android:paddingLeft="@dimen/dp8"
         android:paddingBottom="@dimen/dp5"
         android:paddingTop="@dimen/dp3"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:text="sadasd"
         android:background="@drawable/shape_conner"
         android:textSize="@dimen/sp16"

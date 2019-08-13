@@ -4,4 +4,12 @@
         <item>USDT</item>
         <item>NMST</item>
     </array>
+    <array name="select_level">
+        <item>选择杠杆(非必填)</item>
+        <item>1倍</item>
+        <item>2倍</item>
+        <item>3倍</item>
+        <item>4倍</item>
+        <item>5倍</item>
+    </array>
 </resources>

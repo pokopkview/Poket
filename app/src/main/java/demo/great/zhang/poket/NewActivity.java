@@ -150,12 +150,12 @@ public class NewActivity extends BaseActivity {
 
 
         final Bitmap bitmap = QRCodeUtil.createQRCode("http://yd.ethereume.io/register?memberId=" + PoketApplication.MEMBERID);
-        System.out.println(SharePrefrenceUtils.getParam(mContext,"keywords",String.class)==null);
-        if(SharePrefrenceUtils.getParam(mContext,"keywords",String.class)==null||((String)SharePrefrenceUtils.getParam(mContext,"keywords",String.class)).isEmpty()) {
+        System.out.println(SharePrefrenceUtils.getParam(mContext,"keywords","key"));
+        if(SharePrefrenceUtils.getParam(mContext,"keywords","key").equals("key")) {
             sixword = getCharAndNumr(6);
             SharePrefrenceUtils.setParam(mContext, "keywords", sixword);
         }else{
-            sixword = (String) SharePrefrenceUtils.getParam(mContext,"keywords",String.class);
+            sixword = (String) SharePrefrenceUtils.getParam(mContext,"keywords","key");
         }
         tvQCcode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,7 +173,7 @@ public class NewActivity extends BaseActivity {
         tvClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Integer.parseInt(tvCount.getText().toString())>0) {
+                if(Double.valueOf(tvCount.getText().toString())>0) {
                     llFlowerLayout.setVisibility(View.VISIBLE);
                     llMain.setVisibility(View.GONE);
                 }

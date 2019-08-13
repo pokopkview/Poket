@@ -39,4 +39,10 @@
             android:textSize="@dimen/sp14" />
     </LinearLayout>
 
+    <View
+        android:background="@color/gray"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
 </RelativeLayout>

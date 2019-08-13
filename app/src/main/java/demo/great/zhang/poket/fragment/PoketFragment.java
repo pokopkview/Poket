@@ -213,7 +213,7 @@ public class PoketFragment extends BaseFragment {
         });
         rlMdList.setLayoutManager(new LinearLayoutManager(getAppActivity()));
         rlMdList.setAdapter(dbAdapter);
-        rlMdList.addItemDecoration(new DividerItemDecoration(getAppActivity(),DividerItemDecoration.VERTICAL));
+//        rlMdList.addItemDecoration(new DividerItemDecoration(getAppActivity(),DividerItemDecoration.VERTICAL));
         tvClickCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
